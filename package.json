@@ -1,0 +1,24 @@
+{
+  "name": "zarif.pro",
+  "version": "1.0.0",
+  "description": "My personal website.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "Daniel Zarifpour",
+  "license": "MIT",
+  "dependencies": {
+    "@fullpage/react-fullpage": "^0.1.19",
+    "@react-three/drei": "^7.2.2",
+    "@react-three/fiber": "^7.0.6",
+    "next": "^11.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "three": "^0.130.1"
+  }
+}

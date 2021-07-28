@@ -1,0 +1,8 @@
+#star-canvas {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    height: 100vh !important;
+    width: 100vw !important;
+    z-index: -1;
+}

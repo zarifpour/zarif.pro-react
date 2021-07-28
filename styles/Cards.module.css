@@ -1,0 +1,32 @@
+.cards {
+    height: 100vh;
+}
+.card {
+    border: solid 1px gray;
+    background: rgb(6, 6, 8);
+    border-radius: 8px;
+    padding: 0.3em;
+    pointer-events: auto;
+    margin: 12vw;
+    box-shadow: 0px 0px 8px gray;
+    -moz-box-shadow: 0 0 8px gray;
+    -webkit-box-shadow: 0 0 8px gray;
+    box-shadow: 0px 0px 8px gray;
+}
+.card > p.card-title {
+    margin-top: 0px;
+}
+.card > p.card-info {
+    margin-bottom: 0px;
+}
+p.card-title > span:hover {
+    /* text-decoration: underline; */
+    color: rgb(88, 166, 255);
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1200px) {
+  .card {
+    /* transform: scale(.9); */
+  }
+}

@@ -1,0 +1,13 @@
+.footer {
+    bottom: 25px;
+    position: fixed;
+    height: fit-content;
+    width: -webkit-fill-available;
+}
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: row;
+}
