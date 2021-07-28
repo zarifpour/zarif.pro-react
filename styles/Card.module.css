@@ -24,7 +24,7 @@ p.card-title > span:hover {
 }
 p.card-info {
     color: rgb(171, 178, 185);
-    font-size: clamp(8px, 3vw, 23px);
+    font-size: clamp(12px, 3vw, 23px);
 }
 
 /* @media screen and (min-width: 1200px) {

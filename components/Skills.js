@@ -1,6 +1,5 @@
 import Head from 'next/head';
-import React, { useState, useEffect } from "react";
-import Script from 'next/script'
+import React, { useEffect } from "react";
 import skillsStyles from "../styles/Skills.module.css"
 
 const skills = [
@@ -38,10 +37,44 @@ const skills = [
 ];
 
 export const Skills = () => {
+
+    useEffect(() => {
+        console.log("Loading TagCanvas...");
+
+        TagCanvas.wheelZoom = false;
+        TagCanvas.textFont = "Raleway, sans-serif";
+        TagCanvas.textColour = "white";
+        TagCanvas.textHeight = 26;
+        TagCanvas.outlineMethod = "size";
+        TagCanvas.outlineIncrease = 10;
+        TagCanvas.maxSpeed = 0.03;
+        TagCanvas.minBrightness = 0.2;
+        TagCanvas.depth = 0.92;
+        TagCanvas.pulsateTo = 0.6;
+        TagCanvas.initial = [0.1, -0.1];
+        TagCanvas.decel = 0.98;
+        TagCanvas.reverse = true;
+        TagCanvas.hideTags = false;
+        TagCanvas.shadow = false;
+        TagCanvas.shadowBlur = 3;
+        TagCanvas.weight = false;
+        TagCanvas.imageScale = null;
+        TagCanvas.fadeIn = 1000;
+        TagCanvas.clickToFront = 600;
+        TagCanvas.width = window.innerWidth;
+        TagCanvas.height = window.innerHeight;
+
+        try {
+            TagCanvas.Start("tagcanvas", "taglist");
+        } catch (e) {
+            console.log("Canvas error.");
+            console.log(e);
+        }
+    }, [])
+
     return (
         <>
             <Head>
-                {/* <script type="text/javascript" src="/utils/tag-canvas.js"></script> */}
                 <script type="text/javascript" src="/utils/tagcanvas.min.js"></script>
             </Head>
 
@@ -57,7 +90,7 @@ export const Skills = () => {
                         position: 'relative',
                         margin: '0 auto'
                     }}
-                className="to-fade-in fast-anim"
+                    className="to-fade-in fast-anim"
                 >
                 </canvas>
             </div>
@@ -70,48 +103,4 @@ export const Skills = () => {
             </div>
         </>
     )
-}
-
-function loadTagCanvas() {
-    TagCanvas.wheelZoom = false;
-    TagCanvas.textFont = "Raleway, sans-serif";
-    TagCanvas.textColour = "white";
-    TagCanvas.textHeight = 26;
-    TagCanvas.outlineMethod = "size";
-    TagCanvas.outlineIncrease = 10;
-    TagCanvas.maxSpeed = 0.03;
-    TagCanvas.minBrightness = 0.2;
-    TagCanvas.depth = 0.92;
-    TagCanvas.pulsateTo = 0.6;
-    TagCanvas.initial = [0.1, -0.1];
-    TagCanvas.decel = 0.98;
-    TagCanvas.reverse = true;
-    TagCanvas.hideTags = false;
-    TagCanvas.shadow = false;
-    TagCanvas.shadowBlur = 3;
-    TagCanvas.weight = false;
-    TagCanvas.imageScale = null;
-    TagCanvas.fadeIn = 1000;
-    TagCanvas.clickToFront = 600;
-    TagCanvas.width = window.innerWidth;
-    TagCanvas.height = window.innerHeight;
-
-    try {
-        TagCanvas.Start("tagcanvas", "taglist");
-    } catch (e) {
-        console.log("Canvas error.");
-        console.log(e);
-    }
-}
-
-if (typeof window === 'object') {
-    // Check if document is finally loaded
-    window.addEventListener("load", function () {
-        loadTagCanvas();
-    });
-    // window.addEventListener('popstate', (event) => {
-    //     // TagCanvas.shape = shape;
-    //     // TagCanvas.lock = lock;
-    //     loadTagCanvas();
-    // });
 }
