@@ -15,7 +15,7 @@
 
 }
 p.card-title {
-    font-size: clamp(16px, 4vw, 34px);
+    font-size: clamp(16px, 3.5vw, 34px);
 }
 p.card-title > span:hover {
     /* text-decoration: underline; */
