@@ -58,7 +58,7 @@ const connectWallet = async () => {
         }
     } else {
         elemDisconnected();
-        alert('You need MetaMask to use this app.');
+        alert('Install MetaMask to use this app.');
     }
 }
 
