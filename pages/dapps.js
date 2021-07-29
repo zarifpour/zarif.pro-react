@@ -11,7 +11,7 @@ let connected = false
 const elemDisconnected = () => {
     document.getElementById('connection-status').innerText = "🎈 Disconnected";
     document.getElementById('connection-status').className = "disconnected";
-    document.getElementById('faucet').innerText = "Enable Ethereum";
+    document.getElementById('faucet').innerText = "Connect MetaMask";
 }
 const elemConnecting = () => {
     document.getElementById('connection-status').innerText = "🍊 Connecting...";
@@ -58,7 +58,7 @@ const connectWallet = async () => {
         }
     } else {
         elemDisconnected();
-        alert('You need a Web3 enabled browser to use this app.');
+        alert('You need MetaMask to use this app.');
     }
 }
 
@@ -128,7 +128,7 @@ const DApp = () => {
                                 onClick={connectWallet}
                             >
                                 <span>
-                                    Enable Ethereum
+                                    Connect MetaMask
                                     {/* <img style={{}} height="28px" width="28px" src="/img/ethereum-eth-logo.png" /> */}
                                 </span>
                             </button>
