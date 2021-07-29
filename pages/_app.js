@@ -1,11 +1,14 @@
 import { Layout } from '../components/Layout'
+import { AppWrapper } from '../components/AppWrapper'
 import '../styles/globals.css'
 
 function App({ Component, pageProps }) {
     return (
-        <Layout>
-            <Component {...pageProps} />
-        </Layout>
+        <AppWrapper>
+            <Layout>
+                <Component {...pageProps} />
+            </Layout>
+        </AppWrapper>
     )
 }
 

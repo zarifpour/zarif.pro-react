@@ -43,7 +43,7 @@ export const Skills = () => {
         TagCanvas.wheelZoom = false;
         TagCanvas.textFont = "Raleway, sans-serif";
         TagCanvas.textColour = "white";
-        TagCanvas.textHeight = 26;
+        TagCanvas.textHeight = 30;
         TagCanvas.outlineMethod = "size";
         TagCanvas.outlineIncrease = 10;
         TagCanvas.maxSpeed = 0.03;

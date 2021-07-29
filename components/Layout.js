@@ -10,9 +10,9 @@ export const Layout = ({ children }) => {
             <Meta />
             <main>
                 <Header />
-                {children}
                 <Footer />
                 <Stars />
+                {children}
             </main>
         </>
     )
