@@ -5,7 +5,6 @@ import styles from '../styles/Home.module.css'
 import Card from '../components/Card'
 import { Skills } from '../components/Skills'
 import { Scroll } from '../components/Scroll'
-import FunctionClick from '../components/ex_FunctionClick';
 import Fade from 'react-reveal/Fade';
 
 const Home = () => (
@@ -14,8 +13,8 @@ const Home = () => (
         //FullPage options
         licenseKey={'null'}
         scrollingSpeed={800} /* Options here */
-        lockAnchors={true}
-        anchors={['p1', 'p2', 'p3']}
+        // lockAnchors={true}
+        anchors={['1', '2', '3']}
         // scrollBar={true}
         // verticalAlign={true}
 
@@ -46,7 +45,7 @@ const Home = () => (
                             {/* <Scroll /> */}
                             <Fade>
                                 <Card
-                                    title="DApps"
+                                    title="Dapps"
                                     description="A collection of decentralized applications, including a faucet, an advertisement auction, and a voting app."
                                     link="/dapps"
                                 />

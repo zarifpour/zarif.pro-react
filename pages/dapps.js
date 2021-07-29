@@ -6,8 +6,27 @@ import ReactTooltip from 'react-tooltip';
 import MetaMaskOnboarding from '@metamask/onboarding';
 
 let ethereum = false
+let connected = false
+
+const elemDisconnected = () => {
+    document.getElementById('connection-status').innerText = "🎈 Disconnected";
+    document.getElementById('connection-status').className = "disconnected";
+    document.getElementById('faucet').innerText = "Enable Ethereum";
+}
+const elemConnecting = () => {
+    document.getElementById('connection-status').innerText = "🍊 Connecting...";
+    document.getElementById('connection-status').className = "connecting";
+    document.getElementById('faucet').innerText = "Connecting...";
+}
+const elemConnected = () => {
+    document.getElementById('connection-status').innerText = "🧃 Connected";
+    document.getElementById('connection-status').className = "connected";
+    document.getElementById('faucet').innerText = "Get Tokens";
+    // addNetwork();
+}
 
 const connectWallet = async () => {
+    elemConnecting();
     if (ethereum) {
         try {
             if (!ethereum.isMetaMask) {
@@ -18,24 +37,46 @@ const connectWallet = async () => {
                 const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
                 if (accounts && accounts.length > 0) {
                     console.log(accounts[0]);
-                    document.getElementById('connection-status').innerText = "🧃 Connected";
-                    document.getElementById('connection-status').className = "connected";
-                    document.getElementById('faucet').innerText = "Get Tokens";
+                    elemConnected();
                 }
                 else {
+                    elemDisconnected();
                     alert("Please connect an account to use these apps.")
                 }
             }
         } catch (error) {
-            console.error(
-                'Connect an account with MetaMask to continue.\n' +
-                'https://metamask.io/\n\n' +
-                'Error: ' + error.message
-            );
+            if (error.message.includes("already pending")) {
+                alert("Please continue in MetaMask.")
+            } else {
+                elemDisconnected();
+                console.error(
+                    'Connect an account with MetaMask to continue.\n\n' +
+                    'https://metamask.io/\n\n' +
+                    'Error: ' + error.message
+                );
+            }
         }
     } else {
+        elemDisconnected();
         alert('You need a Web3 enabled browser to use this app.');
     }
+}
+
+const addNetwork = () => {
+    const params = [{
+        chainId: '43113',
+        chainName: 'Avalanche FUJI C-Chain',
+        nativeCurrency: {
+            symbol: 'AVAX',
+            decimals: 18
+        },
+        rpcUrls: ['https://api.avax-test.network/ext/bc/C/rpc'],
+        blockExplorerUrls: ['https://cchain.explorer.avax-test.network']
+    }]
+
+    window.ethereum.request({ method: 'wallet_addEthereumChain', params })
+        .then(() => console.log('Success'))
+        .catch((error) => console.log("Error: " + error.message))
 }
 
 const DApp = () => {
@@ -62,13 +103,13 @@ const DApp = () => {
     return (
         <>
             <Fade left>
-                <div id="connection-status" className="disconnected">
+                <div id="connection-status" className="disconnected" onClick={connectWallet}>
                     🎈 Disconnected
                 </div>
             </Fade>
 
             <div className="landing flex">
-                <Fade>
+                <Fade bottom>
                     <Meta title="Daniel Zarifpour | DApps" />
                     {/* <div data-tip data-for="card-tip"> */}
                     <Card

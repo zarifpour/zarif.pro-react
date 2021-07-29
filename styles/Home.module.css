@@ -19,7 +19,8 @@
     padding-left: 7px; 
 }
 .lh-bug { /* for letter spacing bug */
-    line-height: 2.25vw;
+    min-height: 0vw; /* Safari Clamp Fix */
+    line-height: clamp(9px, 2.53vw, 34.875px);
 }
 
 @media (max-width: 460px) {

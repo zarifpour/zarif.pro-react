@@ -13,9 +13,14 @@ code {
     position: fixed;
     top: 65px;
     left: 5%;
+    cursor: pointer;
+    pointer-events: auto;
 }
 #connection-status.disconnected {
     color: salmon;
+}
+#connection-status.connecting {
+    color: #FFBA00;
 }
 #connection-status.connected {
     color: lightgreen;
@@ -215,6 +220,7 @@ img.hover-img {
   margin: 0;
   cursor: pointer;
   background: -webkit-linear-gradient(#eee, #333);
+  /* background: -webkit-linear-gradient(#eee, #565656); */
 }
 .card-button:active {
       color: white;
