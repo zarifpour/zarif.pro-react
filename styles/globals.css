@@ -10,20 +10,22 @@ code {
   color: white;
 }
 #connection-status {
-    position: fixed;
-    top: 65px;
-    left: 5%;
-    cursor: pointer;
-    pointer-events: auto;
+  position: fixed;
+  top: 65px;
+  left: 5%;
+  cursor: pointer;
+  pointer-events: auto;
+  min-height: 0vw; /* Safari Clamp Fix */
+  font-size: clamp(16px, 3vw, 20px);
 }
 #connection-status.disconnected {
-    color: salmon;
+  color: salmon;
 }
 #connection-status.connecting {
-    color: #FFBA00;
+  color: #ffba00;
 }
 #connection-status.connected {
-    color: lightgreen;
+  color: lightgreen;
 }
 input[type="text"],
 input[type="button"],
@@ -223,7 +225,7 @@ img.hover-img {
   /* background: -webkit-linear-gradient(#eee, #565656); */
 }
 .card-button:active {
-      color: white;
+  color: white;
 }
 .card-button:hover {
   box-shadow: 0px 0px 6px lightgrey;

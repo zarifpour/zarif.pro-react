@@ -63,12 +63,12 @@ const Home = () => (
     />
 );
 
-if (typeof window === 'object') {
-    // Check if document is finally loaded
-    document.addEventListener("DOMContentLoaded", function () {
-        console.log('Finished loading')
-        ReactDOM.render(<Home />, document.getElementById('__next'));
-    });
-}
+// if (typeof window === 'object') {
+//     // Check if document is finally loaded
+//     document.addEventListener("DOMContentLoaded", function () {
+//         console.log('Finished loading')
+//         ReactDOM.render(<Home />, document.getElementById('__next'));
+//     });
+// }
 
 export default Home

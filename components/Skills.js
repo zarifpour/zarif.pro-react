@@ -38,7 +38,7 @@ const skills = [
 export const Skills = () => {
 
     useEffect(() => {
-        console.log("Loading TagCanvas...");
+        // console.log("Loading TagCanvas...");
 
         TagCanvas.wheelZoom = false;
         TagCanvas.textFont = "Raleway, sans-serif";
