@@ -20,6 +20,7 @@ Cheers 🍻
 * __[Next.js](https://nextjs.org)__
 * __[@react-three/fiber](https://github.com/pmndrs/react-three-fiber)__
 * __[TagCanvas](https://www.goat1000.com/tagcanvas.php)__
+* __[react-reveal](https://github.com/rnosov/react-reveal)__
 
 ## 💡 Inspiration
 

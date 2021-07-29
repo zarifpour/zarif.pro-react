@@ -1,6 +1,7 @@
 .zarif {
     width: max-content;
     /* font-size: 4vw; */
+    min-height: 0vw; /* Safari Clamp Fix */
     font-size: clamp(16px, 4.5vw, 62px);
     font-weight: 300;
     /* font-size: 7vw; */
@@ -9,6 +10,7 @@
 }
 .zarif-2 {
     /* font-size: 2.25vw; */
+    min-height: 0vw; /* Safari Clamp Fix */
     font-size: clamp(9px, 2.53vw, 34.875px);
     display: flex;
     font-weight: 300;

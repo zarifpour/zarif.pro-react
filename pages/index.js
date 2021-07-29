@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import ReactFullpage from '@fullpage/react-fullpage';
 import styles from '../styles/Home.module.css'
@@ -6,8 +6,10 @@ import Card from '../components/Card'
 import { Skills } from '../components/Skills'
 import { Scroll } from '../components/Scroll'
 import FunctionClick from '../components/ex_FunctionClick';
+import Fade from 'react-reveal/Fade';
 
 const Home = () => (
+
     <ReactFullpage
         //FullPage options
         licenseKey={'null'}
@@ -41,14 +43,19 @@ const Home = () => (
                             </div>
                         </div>
                         <div className="section">
-                            <Card
-                                title="DApps"
-                                description="A collection of decentralized applications, including a faucet, an advertisement auction, and a voting app."
-                                link="/dapps"
-                            />
+                            {/* <Scroll /> */}
+                            <Fade>
+                                <Card
+                                    title="DApps"
+                                    description="A collection of decentralized applications, including a faucet, an advertisement auction, and a voting app."
+                                    link="/dapps"
+                                />
+                            </Fade>
                         </div>
                         <div className="section">
-                            <Skills />
+                            <Fade>
+                                <Skills />
+                            </Fade>
                         </div>
                     </ReactFullpage.Wrapper>
                 </>

@@ -5,6 +5,7 @@
     border-radius: 8px;
     padding: 1.5em;
     pointer-events: auto;
+    min-height: 0vw; /* Safari Clamp Fix */
     width: clamp(15em, 51vw, 30em);
     box-shadow: 0px 0px 8px gray;
     -moz-box-shadow: 0 0 8px gray;
@@ -15,6 +16,7 @@
 
 }
 p.card-title {
+    min-height: 0vw; /* Safari Clamp Fix */
     font-size: clamp(16px, 3.5vw, 34px);
 }
 p.card-title > span:hover {
@@ -24,6 +26,7 @@ p.card-title > span:hover {
 }
 p.card-info {
     color: rgb(171, 178, 185);
+    min-height: 0vw; /* Safari Clamp Fix */
     font-size: clamp(12px, 3vw, 23px);
 }
 

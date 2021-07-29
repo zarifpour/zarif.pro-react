@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import React, { useEffect } from "react";
 import skillsStyles from "../styles/Skills.module.css"
 
@@ -74,10 +73,6 @@ export const Skills = () => {
 
     return (
         <>
-            <Head>
-                <script type="text/javascript" src="/utils/tagcanvas.min.js"></script>
-            </Head>
-
             <div id="skill-sphere" className={`${skillsStyles.tagcanvas} flex`}>
                 <canvas
                     id="tagcanvas"

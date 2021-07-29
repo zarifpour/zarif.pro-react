@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import cardStyles from '../styles/Card.module.css'
 
-const Card = ({ title, link, description }) => {
+const Card = ({ title, link, description, children }) => {
     return (
         <div id="card-container" className="flex no-pointer to-fade-in fast-anim">
             <div id="card" className={cardStyles.card}>
@@ -16,6 +16,7 @@ const Card = ({ title, link, description }) => {
                     <p className={cardStyles["card-info"]}>
                         {description}
                     </p>
+                    <div id="child-container">{children}</div>
                 </div>
             </div>
         </div>

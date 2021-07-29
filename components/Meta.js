@@ -5,8 +5,11 @@ const Meta = ({ title, keywords, description }) => {
         <Head>
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            {/* SEO */}
             <meta name="keywords" content={keywords} />
             <meta name="description" content={description} />
+            {/* JS */}
+            <script type="text/javascript" src="/utils/tagcanvas.min.js"></script>
             <link rel="icon" href="/img/logo.png" />
             <title>{title}</title>
         </Head>
