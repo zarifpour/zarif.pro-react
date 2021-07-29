@@ -38,4 +38,4 @@ Cheers 🍻
 
 ![alt text](https://github.com/zarifpour/zarif.pro/blob/master/assets/site-preview.png?raw=true)
 
-#### Link to site: https://zarif.pro
+#### Link to site: https://zarif-pro-react.vercel.app/
