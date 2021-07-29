@@ -6,6 +6,16 @@ import Card from '../components/Card'
 import { Skills } from '../components/Skills'
 import { Scroll } from '../components/Scroll'
 import Fade from 'react-reveal/Fade';
+import Link from 'next/link'
+import Router from 'next/router'
+
+const ViewApps = React.forwardRef(({ onClick, href }, ref) => {
+    return (
+        <a href={href} onClick={onClick} ref={ref}>
+            View Apps
+        </a>
+    )
+})
 
 const Home = () => (
 
@@ -48,7 +58,25 @@ const Home = () => (
                                     title="Dapps"
                                     description="A collection of decentralized applications, including a faucet, an advertisement auction, and a voting app."
                                     link="/dapps"
-                                />
+                                >
+                                    <Link href="/dapps">
+                                        <div className="flex">
+                                            <button
+                                                id="faucet"
+                                                className="card-button connect-wallet"
+                                                style={{
+                                                    width: "-webkit-fill-available",
+                                                    height: "clamp(30px, 6vw, 60px)"
+                                                }}
+                                            >
+                                                <span>
+                                                    <a>View Apps</a>
+                                                    {/* <img style={{}} height="28px" width="28px" src="/img/ethereum-eth-logo.png" /> */}
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </Link>
+                                </Card>
                             </Fade>
                         </div>
                         <div className="section">

@@ -17,7 +17,7 @@
 }
 p.card-title {
     min-height: 0vw; /* Safari Clamp Fix */
-    font-size: clamp(16px, 3.5vw, 34px);
+    font-size: clamp(19px, 3.5vw, 34px);
 }
 p.card-title > span:hover {
     /* text-decoration: underline; */
@@ -27,7 +27,7 @@ p.card-title > span:hover {
 p.card-info {
     color: rgb(171, 178, 185);
     min-height: 0vw; /* Safari Clamp Fix */
-    font-size: clamp(12px, 3vw, 23px);
+    font-size: clamp(13px, 3vw, 23px);
 }
 
 /* @media screen and (min-width: 1200px) {
