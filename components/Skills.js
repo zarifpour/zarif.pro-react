@@ -73,7 +73,7 @@ export const Skills = () => {
 
     return (
         <>
-            <div id="skill-sphere" className={`${skillsStyles.tagcanvas} flex`}>
+            <div id="skill-sphere" className={`${skillsStyles.tagcanvas} flex`} style={{ pointerEvents: "none" }}>
                 <canvas
                     id="tagcanvas"
                     width="820"
