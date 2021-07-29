@@ -2,7 +2,7 @@
     width: max-content;
     /* font-size: 4vw; */
     min-height: 0vw; /* Safari Clamp Fix */
-    font-size: clamp(16px, 4.5vw, 62px);
+    font-size: clamp(21px, 4.5vw, 62px);
     font-weight: 300;
     /* font-size: 7vw; */
     /* font-size: clamp(1rem, 0.4706rem + 2.8235vw, 4rem); */
@@ -11,7 +11,7 @@
 .zarif-2 {
     /* font-size: 2.25vw; */
     min-height: 0vw; /* Safari Clamp Fix */
-    font-size: clamp(9px, 2.53vw, 34.875px);
+    font-size: clamp(12px, 2.53vw, 34.875px);
     display: flex;
     font-weight: 300;
 }
@@ -20,7 +20,7 @@
 }
 .lh-bug { /* for letter spacing bug */
     min-height: 0vw; /* Safari Clamp Fix */
-    line-height: clamp(9px, 2.53vw, 34.875px);
+    line-height: clamp(12px, 2.53vw, 34.875px);
 }
 
 @media (max-width: 460px) {
