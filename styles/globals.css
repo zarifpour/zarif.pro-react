@@ -213,6 +213,8 @@ img.hover-img {
   /* font-weight: 600; */
   font-size: clamp(12px, 3vw, 23px);
   margin: 0;
+  cursor: pointer;
+  background: -webkit-linear-gradient(#eee, #333);
 }
 .card-button:active {
       color: white;

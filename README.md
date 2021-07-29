@@ -18,9 +18,11 @@ Cheers 🍻
 
 * __[React](https://reactjs.org)__
 * __[Next.js](https://nextjs.org)__
-* __[@react-three/fiber](https://github.com/pmndrs/react-three-fiber)__
+* __[MetaMask](https://github.com/MetaMask/metamask-onboarding#metamask-onboarding)__
 * __[TagCanvas](https://www.goat1000.com/tagcanvas.php)__
 * __[react-reveal](https://github.com/rnosov/react-reveal)__
+* __[react-tooltip](https://github.com/wwayne/react-tooltip)__
+* __[@react-three/fiber](https://github.com/pmndrs/react-three-fiber)__
 
 ## 💡 Inspiration
 

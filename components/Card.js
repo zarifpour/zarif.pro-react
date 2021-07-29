@@ -3,7 +3,7 @@ import cardStyles from '../styles/Card.module.css'
 
 const Card = ({ title, link, description, children }) => {
     return (
-        <div id="card-container" className="flex no-pointer to-fade-in fast-anim">
+        <div id="card-container" className="flex no-pointer to-fade-in fast-anim" >
             <div id="card" className={cardStyles.card}>
                 <div id="text-container">
                     <p className={cardStyles["card-title"]}>
