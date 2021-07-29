@@ -217,10 +217,12 @@ img.hover-img {
 }
 .card-button {
   /* font-weight: 600; */
-  font-size: clamp(12px, 3vw, 23px);
+  font-size: clamp(14px, 3vw, 23px);
   margin: 0;
   cursor: pointer;
   background: -webkit-linear-gradient(#eee, #333);
+  width: -webkit-fill-available;
+  height: clamp(35px, 6vw, 60px);
   /* background: -webkit-linear-gradient(#eee, #565656); */
 }
 .card-button:active {

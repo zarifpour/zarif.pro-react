@@ -121,10 +121,6 @@ const DApp = () => {
                             <button
                                 id="faucet"
                                 className="card-button connect-wallet"
-                                style={{
-                                    width: "-webkit-fill-available",
-                                    height: "clamp(30px, 6vw, 60px)"
-                                }}
                                 onClick={connectWallet}
                             >
                                 <span>

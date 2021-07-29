@@ -62,12 +62,8 @@ const Home = () => (
                                     <Link href="/dapps">
                                         <div className="flex">
                                             <button
-                                                id="faucet"
+                                                id="view-apps"
                                                 className="card-button connect-wallet"
-                                                style={{
-                                                    width: "-webkit-fill-available",
-                                                    height: "clamp(30px, 6vw, 60px)"
-                                                }}
                                             >
                                                 <span>
                                                     <a>View Apps</a>
