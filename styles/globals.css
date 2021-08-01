@@ -352,6 +352,7 @@ img.hover-img {
   cursor: pointer;
   background: none;
   padding: 12px 25px;
+  margin: 0;
 }
 .btn-3 {
   position: relative;
@@ -365,7 +366,7 @@ img.hover-img {
 .btn-2:hover {
   border-radius: 25px;
   background: rgb(60, 60, 60);
-  border: 1px solid rgb(60, 60, 60);
+  border: 0px solid rgb(60, 60, 60);
   transition: transform 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
   transition: transform 0.2s ease 0s, box-shadow 0.2s ease 0s;
   /* background: -webkit-linear-gradient(#eee, #333); */

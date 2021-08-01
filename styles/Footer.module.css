@@ -6,7 +6,7 @@
     z-index: 100;
 }
 .responsive-container {
-    width: 298px;
+    width: fit-content;
 }
 .responsive-container:hover {
     border-radius: 25px;
