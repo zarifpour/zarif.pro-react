@@ -10,8 +10,9 @@
 }
 .responsive-container:hover {
     border-radius: 25px;
-    transition: transform 0.2s ease 0s, box-shadow 0.2s ease 0s;
+    transition: transform 0.04s ease 0s, box-shadow 0.04s ease 0s;
     background: rgb(34, 34, 34);
+    overflow: hidden;
 }
 .button-wrapper {
     display: flex;
