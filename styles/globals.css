@@ -11,6 +11,7 @@ code {
 }
 #status-msg {
   color: rgb(214 219 224);
+  color: #ffba00;
   bottom: 20%;
   position: fixed;
   text-align: center;

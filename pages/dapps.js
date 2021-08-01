@@ -85,6 +85,7 @@ const elemConnected = () => {
     document.getElementById('connect-btn').innerText = "🧃 Connected";
     document.getElementById('connection-status').className = "connected";
     document.getElementById('faucet').innerText = "Get Tokens";
+    document.getElementById('faucet').onclick = faucet;
     // checkNetwork();
 }
 let animationName
@@ -98,6 +99,10 @@ const changeStatus = (status) => {
         animationName = document.getElementById("status-msg").style.animationName;
         document.getElementById("status-msg").style.animationName = "none";
     };
+}
+
+const faucet = () => {
+    console.log('onClick Function changed successfully!');
 }
 
 const connectWallet = async () => {
@@ -115,9 +120,11 @@ const connectWallet = async () => {
                     console.log(accounts);
                     console.log(accounts[0]);
                     console.log(ethereum.chainId)
-                    if (ethereum.chainId !== 0xa869) {
+                    if (ethereum.chainId !== "0x4") {
                         console.log("Switch to Rinkeby Network to use this app.")
                         changeStatus("Switch to <a target='_blank' href='https://gist.github.com/zarifpour/309fdf60e6993a11a0ef8f72f1f95546'>Rinkeby Network</a> to use this app")
+                    } else {
+                        changeStatus("")
                     }
                     elemConnected();
                 }
@@ -138,7 +145,7 @@ const connectWallet = async () => {
                     'https://metamask.io/\n\n' +
                     'Error: ' + error.message
                 );
-                changeStatus('Error: ' + error.message);
+                changeStatus("<span style='color: salmon;'>Error: " + error.message + "</span>");
             }
         }
     } else {
@@ -211,14 +218,14 @@ const Dapp = () => {
 
         const handleChainChanged = () => {
             // eat errors
-            if (chain === "chainId") {
-                changeStatus("")
+            if (ethereum.chainId === "0x4") {
+                changeStatus("<span style='color: lightgreen;'>Connected to Rinkeby</span>")
             } else {
                 changeStatus("Switch to <a target='_blank' href='https://gist.github.com/zarifpour/309fdf60e6993a11a0ef8f72f1f95546'>Rinkeby Network</a> to use this app")
             }
-            activate(injected, undefined, true).catch((error) => {
-                console.error('Failed to activate after chain changed', error)
-            })
+            // activate(injected, undefined, true).catch((error) => {
+            //     console.error('Failed to activate after chain changed', error)
+            // })
         }
 
         const handleAccountsChanged = (accounts) => {
@@ -244,7 +251,7 @@ const Dapp = () => {
             //     console.log(accounts[0])
             // })
 
-            // ethereum.on('chainChanged', handleChainChanged)
+            ethereum.on('chainChanged', handleChainChanged)
             ethereum.on('accountsChanged', handleAccountsChanged)
 
         } else {
