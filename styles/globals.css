@@ -9,22 +9,54 @@ code {
 .svg-icon {
   color: white;
 }
+#status-msg {
+  color: rgb(214 219 224);
+  bottom: 20%;
+  position: fixed;
+  text-align: center;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fill-available;
+  z-index: 100;
+  font-size: clamp(16px, 3vw, 20px);
+}
 #connection-status {
   position: fixed;
   top: 65px;
   left: 5%;
   cursor: pointer;
   pointer-events: auto;
+}
+#connect-btn {
+  cursor: pointer;
+  background: none;
   min-height: 0vw; /* Safari Clamp Fix */
   font-size: clamp(16px, 3vw, 20px);
+  border: 0;
 }
-#connection-status.disconnected {
+#connect-btn:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
+  border-radius: 25px;
+  transition: transform 0.2s ease 0s, box-shadow 0.2s ease 0s;
+  background: rgb(34, 34, 34);
+  /* background: -webkit-linear-gradient(#eee, #333); */
+  border: 1px solid rgb(34, 34, 34);
+  box-shadow: rgb(19 19 19) 0px 0px 0px, rgb(44 44 44) 0px 0px 0px;
+}
+#connect-btn:active {
+  box-shadow: 0px 0px 3px lightgrey;
+  -webkit-box-shadow: 0px 0px 3px lightgrey;
+  box-shadow: 0px 0px 3px lightgrey;
+}
+
+#connection-status.disconnected button {
   color: salmon;
 }
-#connection-status.connecting {
+#connection-status.connecting button {
   color: #ffba00;
 }
-#connection-status.connected {
+#connection-status.connected button {
   color: lightgreen;
 }
 input[type="text"],
@@ -222,16 +254,18 @@ img.hover-img {
   cursor: pointer;
   background: -webkit-linear-gradient(#eee, #333);
   width: -webkit-fill-available;
-  height: clamp(35px, 6vw, 60px);
+  height: clamp(35px, 6.5vw, 60px);
   /* background: -webkit-linear-gradient(#eee, #565656); */
 }
 .card-button:active {
   color: white;
 }
 .card-button:hover {
-  box-shadow: 0px 0px 6px lightgrey;
-  -webkit-box-shadow: 0px 0px 6px lightgrey;
-  box-shadow: 0px 0px 6px lightgrey;
+  box-shadow: 0px 0px 3px lightgrey;
+  -webkit-box-shadow: 0px 0px 3px lightgrey;
+  box-shadow: 0px 0px 3px lightgrey;
+  transform: scale(1.02);
+  transition: transform 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
 }
 
 .gradient-text {
@@ -276,7 +310,10 @@ img.hover-img {
   /* margin: 0px 20px; */
   margin: 0px 12px;
 }
-
+.btn-3:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
+}
 .btn-3::before,
 .btn-3::after {
   content: "";

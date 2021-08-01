@@ -1,6 +1,6 @@
 #card-container {}
 .card {
-    border: solid 1px gray;
+    /* border: solid 1px gray; */
     background: rgb(6, 6, 8);
     border-radius: 8px;
     padding: 1.5em;
