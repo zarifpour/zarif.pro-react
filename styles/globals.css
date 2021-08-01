@@ -47,11 +47,11 @@ code {
 #dapp-container button {
   cursor: pointer;
   background: none;
-  font-size: 32px;
+  font-size: 30px;
   border: 0;
   margin: 10px;
-  width: 65px;
-  height: 60px;
+  width: 55px;
+  height: 50px;
 }
 
 #dapp-container button:hover {

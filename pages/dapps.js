@@ -428,13 +428,13 @@ const Dapp = () => {
                 <div id="dapp-container" className="flex">
                     <div>
                         <button id="dapp1" class="dapp-btn">
-                            🚰
+                            <span>🚰</span>
                         </button>
                         <button id="dapp2" class="dapp-btn">
-                            🗳
+                            <span>🗳</span>
                         </button>
                         <button id="dapp3" class="dapp-btn">
-                            💰
+                            <span>💰</span>
                         </button>
                     </div>
                 </div>
