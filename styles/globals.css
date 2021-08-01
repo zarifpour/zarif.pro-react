@@ -410,3 +410,9 @@ span::after {
     height: 100vh;
   }
 }
+
+@media only screen and (max-device-width: 480px) {
+    #only-desktop {
+        display: block !important;
+    }
+}

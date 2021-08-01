@@ -267,6 +267,7 @@ const Dapp = () => {
                 {/* style={{ display: "none" }} */}
                 <div id="status-msg" style={{ display: "none" }}>
                     <span id="msg-content">This is a message</span>
+                    <span id="only-desktop" style={{ display: "none" }}>(on your desktop)</span>
                 </div>
             </Bounce>
 

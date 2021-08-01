@@ -63,7 +63,7 @@ svg:not(:root) {
         transform: translateY(0);
     }
 }
-@media (max-width: 460px) {
+@media only screen and (max-device-width: 480px) {
     .scroll-down {
         display: none;
         font-size: 12px;
