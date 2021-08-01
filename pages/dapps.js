@@ -129,8 +129,8 @@ const connectWallet = async () => {
             }
         } catch (error) {
             if (error.message.includes("already pending")) {
-                console.log("Please continue in MetaMask.")
-                changeStatus("Please continue in MetaMask")
+                console.log("Continue in MetaMask.")
+                changeStatus("Continue in MetaMask")
             } else {
                 elemDisconnected();
                 console.error(
