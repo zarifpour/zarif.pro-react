@@ -30,8 +30,10 @@ code {
   padding: 10px;
   box-shadow: inset 1px 1px 20px 20px #1b1a1a;
   /* border-radius: 8px; */
-    background: rgb(34, 34, 34);
-    box-shadow: rgb(14 14 14) 6px 6px 11px inset, rgb(44 44 44) -6px -6px 11px inset;
+  border-radius: 0;
+  background: rgb(34, 34, 34);
+  box-shadow: rgb(14 14 14) 6px 6px 11px inset,
+    rgb(44 44 44) -6px -6px 11px inset;
 }
 .input-text:focus {
   outline: none;
