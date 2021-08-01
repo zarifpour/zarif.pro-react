@@ -34,7 +34,7 @@ code {
   height: -moz-fit-content;
   height: fit-content;
   width: -webkit-fill-available;
-  z-index: 100;
+  z-index: 101;
   cursor: pointer;
   pointer-events: auto;
   overflow: hidden;
