@@ -12,7 +12,8 @@ code {
 #place-here,
 #place-here img {
   width: -webkit-fill-available;
-  width: 250px;
+  min-height: 0vw;
+  width: clamp(100px, 25vw, 250px);
 }
 .input-container {
   width: -webkit-fill-available;
