@@ -64,7 +64,7 @@ code {
   border: 0;
 }
 #connect-btn:hover {
-  transform: scale(1.02);
+  /* transform: scale(1.02); */
   transition: transform 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
   border-radius: 25px;
   transition: transform 0.04s ease 0s, box-shadow 0.04s ease 0s;
