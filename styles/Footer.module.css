@@ -5,10 +5,19 @@
     width: -webkit-fill-available;
     z-index: 100;
 }
+.responsive-container {
+    width: 298px;
+}
+.responsive-container:hover {
+    border-radius: 25px;
+    transition: transform 0.2s ease 0s, box-shadow 0.2s ease 0s;
+    background: rgb(34, 34, 34);
+}
 .button-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
     flex-direction: row;
+    height: 55px;
 }
