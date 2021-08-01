@@ -19,6 +19,7 @@
     "@react-three/fiber": "^7.0.6",
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7",
+    "ethers": "^5.4.3",
     "next": "^11.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

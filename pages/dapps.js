@@ -8,6 +8,9 @@ import { Web3ReactProvider } from '@web3-react/core'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { useWeb3React as useWeb3ReactCore } from '@web3-react/core'
 import Bounce from 'react-reveal/Bounce';
+import { ethers } from 'ethers';
+import { Contract } from "web3-eth-contract";
+import { lastIndexOf } from "lodash";
 
 // import your favorite web3 convenience library here
 
@@ -101,8 +104,157 @@ const changeStatus = (status) => {
     };
 }
 
-const faucet = () => {
-    console.log('onClick Function changed successfully!');
+async function faucet() {
+    // console.log('onClick Function changed successfully!');
+
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    const signer = provider.getSigner();
+
+    // console.log(provider);
+    // console.log(signer);
+
+    const faucetAddress = "0xE8690e96bEC46b1d7C0281a7FAf1589d20475a87"
+
+    const faucetAbi = [
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "previousOwner",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "newOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "OwnershipTransferred",
+            "type": "event"
+        },
+        {
+            "inputs": [],
+            "name": "contractBalance",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "liquidate",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "owner",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "renounceOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "newOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "transferOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "waitTime",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "withdraw",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "zebraToken",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ];
+
+    const faucetContract = new ethers.Contract(faucetAddress, faucetAbi, provider);
+
+    const signedContract = faucetContract.connect(signer);
+    // try {
+    //     await signedContract.estimateGas.withdraw();
+    // } catch (error) {
+    //     console.log(error);
+    // }
+    try {
+        let tx = await signedContract.withdraw();
+        changeStatus("<span style='color: lightgreen;'>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
+        console.log(tx)
+    } catch (error) {
+        console.error(
+            'Error: ' + error.message
+        );
+        let index1 = "execution reverted: ";
+        let index2 = '","data":{"originalError":';
+        let error_msg = error.message.match(new RegExp(index1 + "(.*)" + index2));
+        if (error_msg !== null) {
+            changeStatus("<span style='color: salmon;'>Error: " + error_msg[1] + "</span>");
+        } else {
+            console.log(error.message);
+        }
+    }
+
 }
 
 const connectWallet = async () => {
@@ -114,12 +266,14 @@ const connectWallet = async () => {
             } else {
                 // Will open the MetaMask UI
                 // You should disable this button while the request is pending!
-                console.log(ethereum)
+
+                // console.log(ethereum)
+
                 const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
                 if (accounts && accounts.length > 0) {
-                    console.log(accounts);
-                    console.log(accounts[0]);
-                    console.log(ethereum.chainId)
+                    // console.log(accounts);
+                    // console.log(accounts[0]);
+                    // console.log(ethereum.chainId)
                     if (ethereum.chainId !== "0x4") {
                         console.log("Switch to Rinkeby Network to use this app.")
                         changeStatus("Switch to <a target='_blank' href='https://gist.github.com/zarifpour/309fdf60e6993a11a0ef8f72f1f95546'>Rinkeby Network</a> to use this app")
@@ -266,6 +420,20 @@ const Dapp = () => {
                 <div id="connection-status" className="disconnected" onClick={connectWallet}>
                     <button id="connect-btn">
                         🎈 Disconnected
+                    </button>
+                </div>
+            </Fade>
+
+            <Fade top>
+                <div id="dapp-container" className="flex">
+                    <button id="dapp1" class="dapp-btn">
+                        🚰
+                    </button>
+                    <button id="dapp2" class="dapp-btn">
+                        🗳
+                    </button>
+                    <button id="dapp3" class="dapp-btn">
+                        💰
                     </button>
                 </div>
             </Fade>
