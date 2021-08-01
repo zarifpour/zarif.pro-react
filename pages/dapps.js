@@ -78,18 +78,22 @@ export const ARBITRUM_TESTNET_PARAMS = [{
 const elemDisconnected = () => {
     document.getElementById('connect-btn').innerText = "🎈 Disconnected";
     document.getElementById('connection-status').className = "disconnected";
-    document.getElementById('faucet').innerText = "Connect MetaMask";
+    document.getElementsByClassName('connect-wallet').innerText = "Connect MetaMask";
 }
 const elemConnecting = () => {
     document.getElementById('connect-btn').innerText = "🍊 Connecting...";
     document.getElementById('connection-status').className = "connecting";
-    document.getElementById('faucet').innerText = "Connecting...";
+    document.getElementsByClassName('connect-wallet').innerText = "Connecting...";
 }
 const elemConnected = () => {
     document.getElementById('connect-btn').innerText = "🧃 Connected";
     document.getElementById('connection-status').className = "connected";
     document.getElementById('faucet').innerText = "Get Tokens";
     document.getElementById('faucet').onclick = faucet;
+    document.getElementById('ad-auction').innerText = "Place Bid";
+    document.getElementById('ad-auction').onclick = adAuction;
+    document.getElementById('election').innerText = "Start Election";
+    document.getElementById('election').onclick = election;
     // checkNetwork();
 }
 let animationName
@@ -116,6 +120,314 @@ function checkNetwork() {
 }
 
 async function faucet() {
+    // console.log('onClick Function changed successfully!');
+
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    const signer = provider.getSigner();
+
+    // console.log(provider);
+    // console.log(signer);
+
+    const faucetAddress = "0xE8690e96bEC46b1d7C0281a7FAf1589d20475a87"
+
+    const faucetAbi = [
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "previousOwner",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "newOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "OwnershipTransferred",
+            "type": "event"
+        },
+        {
+            "inputs": [],
+            "name": "contractBalance",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "liquidate",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "owner",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "renounceOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "newOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "transferOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "waitTime",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "withdraw",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "zebraToken",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ];
+
+    const faucetContract = new ethers.Contract(faucetAddress, faucetAbi, provider);
+
+    const signedContract = faucetContract.connect(signer);
+    // try {
+    //     await signedContract.estimateGas.withdraw();
+    // } catch (error) {
+    //     console.log(error);
+    // }
+    if (checkNetwork()) {
+        try {
+            let tx = await signedContract.withdraw();
+            changeStatus("<span style='color: lightgreen;'>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
+            console.log(tx)
+        } catch (error) {
+            console.error(
+                'Error: ' + error.message
+            );
+            let index1 = "execution reverted: ";
+            let index2 = '","data":{"originalError":';
+            let error_msg = error.message.match(new RegExp(index1 + "(.*)" + index2));
+            if (error_msg !== null) {
+                changeStatus("<span style='color: salmon;'>Error: " + error_msg[1] + "</span>");
+            } else {
+                console.log(error.message);
+            }
+        }
+    }
+}
+
+async function adAuction() {
+    // console.log('onClick Function changed successfully!');
+
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    const signer = provider.getSigner();
+
+    // console.log(provider);
+    // console.log(signer);
+
+    const faucetAddress = "0xE8690e96bEC46b1d7C0281a7FAf1589d20475a87"
+
+    const faucetAbi = [
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "previousOwner",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "newOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "OwnershipTransferred",
+            "type": "event"
+        },
+        {
+            "inputs": [],
+            "name": "contractBalance",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "liquidate",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "owner",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "renounceOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "newOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "transferOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "waitTime",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "withdraw",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "zebraToken",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ];
+
+    const faucetContract = new ethers.Contract(faucetAddress, faucetAbi, provider);
+
+    const signedContract = faucetContract.connect(signer);
+    // try {
+    //     await signedContract.estimateGas.withdraw();
+    // } catch (error) {
+    //     console.log(error);
+    // }
+    if (checkNetwork()) {
+        try {
+            let tx = await signedContract.withdraw();
+            changeStatus("<span style='color: lightgreen;'>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
+            console.log(tx)
+        } catch (error) {
+            console.error(
+                'Error: ' + error.message
+            );
+            let index1 = "execution reverted: ";
+            let index2 = '","data":{"originalError":';
+            let error_msg = error.message.match(new RegExp(index1 + "(.*)" + index2));
+            if (error_msg !== null) {
+                changeStatus("<span style='color: salmon;'>Error: " + error_msg[1] + "</span>");
+            } else {
+                console.log(error.message);
+            }
+        }
+    }
+}
+
+async function election() {
     // console.log('onClick Function changed successfully!');
 
     const provider = new ethers.providers.Web3Provider(ethereum);
@@ -487,22 +799,45 @@ const Dapp = () => {
                         <div id="card2" style={{ display: "none" }}>
                             <Card
                                 title="Ad Auction"
-                                description="This advertisement space will display the image of the highest bidder for 24 hours."
+                                description="This advertisement space displays the image of the highest bidder until they are outbid."
                                 link="/dapps"
                             >
-                                {/* <Fade> */}
-                                {/* </Fade> */}
                                 <div className="flex">
-                                    <button
-                                        id="ad-auction"
-                                        className="card-button connect-wallet"
-                                        onClick={connectWallet}
-                                    >
-                                        <span>
-                                            Connect MetaMask
-                                            {/* <img style={{}} height="28px" width="28px" src="/img/ethereum-eth-logo.png" /> */}
-                                        </span>
-                                    </button>
+                                    <div id="place-here" style={{ marginBottom: "1em" }}>
+                                        <img src="/img/placeholder.png" />
+                                    </div>
+                                    <div className="break" style={{ margin: "0" }}></div>
+                                    <form style={{ width: "-webkit-fill-available" }}>
+                                        <div className="input-container" style={{ marginBottom: "1em", display: "flex" }}>
+                                            <input
+                                                id="image-url"
+                                                type="url"
+                                                placeholder="Paste Image URL"
+                                                className="input-text"
+                                                style={{ width: "75%" }}
+                                            />
+                                            <input
+                                                id="bid"
+                                                type="number"
+                                                placeholder="Bid"
+                                                className="input-text"
+                                                style={{ width: "25%" }}
+                                            />
+                                        </div>
+                                        <div className="input-container" style={{ marginBottom: "1em" }}>
+                                        </div>
+                                        <button
+                                            id="ad-auction"
+                                            type="submit"
+                                            className="card-button connect-wallet"
+                                            onClick={connectWallet}
+                                        >
+                                            <span>
+                                                Connect MetaMask
+                                                {/* <img style={{}} height="28px" width="28px" src="/img/ethereum-eth-logo.png" /> */}
+                                            </span>
+                                        </button>
+                                    </form>
                                 </div>
                             </Card>
                         </div>
@@ -512,8 +847,6 @@ const Dapp = () => {
                                 description="Start an election and collect voting results at the end of the voting period."
                                 link="/dapps"
                             >
-                                {/* <Fade> */}
-                                {/* </Fade> */}
                                 <div className="flex">
                                     <button
                                         id="election"

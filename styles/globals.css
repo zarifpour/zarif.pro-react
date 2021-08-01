@@ -9,6 +9,33 @@ code {
 .svg-icon {
   color: white;
 }
+#place-here,
+#place-here img {
+  width: -webkit-fill-available;
+  width: 250px;
+}
+.input-container {
+  width: -webkit-fill-available;
+}
+.input-text {
+  width: -webkit-fill-available;
+  border: white;
+  background: black;
+  /* height: 3em; */
+  box-shadow: inset 0px 0px 6px #464545;
+  padding: 0;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  box-shadow: inset 1px 1px 20px 20px #1b1a1a;
+  /* border-radius: 8px; */
+    background: rgb(34, 34, 34);
+    box-shadow: rgb(14 14 14) 6px 6px 11px inset, rgb(44 44 44) -6px -6px 11px inset;
+}
+.input-text:focus {
+  outline: none;
+}
 #status-msg {
   color: rgb(214 219 224);
   color: #ffba00;
@@ -336,12 +363,12 @@ img.hover-img {
 }
 
 .button-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    flex-direction: row;
-    height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  flex-direction: row;
+  height: 55px;
 }
 .btn-2 {
   position: relative;
