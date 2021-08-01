@@ -436,39 +436,41 @@ const Dapp = () => {
                 <Fade bottom>
                     <Meta title="Daniel Zarifpour | Dapps" />
                     {/* <div data-tip data-for="card-tip"> */}
-                    <Card
-                        title="Faucet"
-                        description="Get some Zebra tokens on the Rinkeby Test Network to use my applications."
-                        link="/dapps"
-                    >
-                        <Fade>
-                            <div id="dapp-container" className="flex">
-                                <div id="dapp-btns" className="responsive-container">
-                                    <button id="dapp1" className="btn-2">
-                                        <img src="/svg/drop.svg" alt="Faucet" />
-                                    </button>
-                                    <button id="dapp2" className="btn-2">
-                                        <img src="/svg/dollar.svg" alt="Auction" />
-                                    </button>
-                                    <button id="dapp3" className="btn-2">
-                                        <img src="/svg/archive.svg" alt="Poll" />
-                                    </button>
+                    <div id="card-component-container" style={{ zIndex: "101" }}>
+                        <Card
+                            title="Faucet"
+                            description="Get some Zebra tokens on the Rinkeby Test Network to use my applications."
+                            link="/dapps"
+                        >
+                            <Fade>
+                                <div id="dapp-container" className="flex">
+                                    <div id="dapp-btns" className="responsive-container">
+                                        <button id="dapp1" className="btn-2">
+                                            <img src="/svg/drop.svg" alt="Faucet" />
+                                        </button>
+                                        <button id="dapp2" className="btn-2">
+                                            <img src="/svg/dollar.svg" alt="Auction" />
+                                        </button>
+                                        <button id="dapp3" className="btn-2">
+                                            <img src="/svg/archive.svg" alt="Poll" />
+                                        </button>
+                                    </div>
                                 </div>
+                            </Fade>
+                            <div className="flex">
+                                <button
+                                    id="faucet"
+                                    className="card-button connect-wallet"
+                                    onClick={connectWallet}
+                                >
+                                    <span>
+                                        Connect MetaMask
+                                        {/* <img style={{}} height="28px" width="28px" src="/img/ethereum-eth-logo.png" /> */}
+                                    </span>
+                                </button>
                             </div>
-                        </Fade>
-                        <div className="flex">
-                            <button
-                                id="faucet"
-                                className="card-button connect-wallet"
-                                onClick={connectWallet}
-                            >
-                                <span>
-                                    Connect MetaMask
-                                    {/* <img style={{}} height="28px" width="28px" src="/img/ethereum-eth-logo.png" /> */}
-                                </span>
-                            </button>
-                        </div>
-                    </Card>
+                        </Card>
+                    </div>
                     {/* </div> */}
                     {/* <ReactTooltip id="card-tip" role="example">
                         <div style={{ textAlign: "center" }}>

@@ -11,7 +11,6 @@
     -moz-box-shadow: 0 0 8px gray;
     -webkit-box-shadow: 0 0 8px gray;
     box-shadow: 0px 0px 8px gray;
-    z-index: 101;
 }
 .card#text-container {
 
