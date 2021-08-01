@@ -65,6 +65,7 @@ svg:not(:root) {
 }
 @media (max-width: 460px) {
     .scroll-down {
+        display: none;
         font-size: 12px;
     }
 }
