@@ -23,6 +23,7 @@ export const injected = new InjectedConnector({/*{ supportedChainIds: [43113] }*
 
 let ethereum = false
 let connected = false
+let activeCard = 1;
 
 const toHex = (num) => {
     return '0x' + num.toString(16)
@@ -102,6 +103,16 @@ const changeStatus = (status) => {
         animationName = document.getElementById("status-msg").style.animationName;
         document.getElementById("status-msg").style.animationName = "none";
     };
+}
+
+function checkNetwork() {
+    if (ethereum.chainId !== "0x4") {
+        console.log("Switch to Rinkeby Network to use this app.")
+        changeStatus("Switch to <a target='_blank' href='https://gist.github.com/zarifpour/309fdf60e6993a11a0ef8f72f1f95546'>Rinkeby Network</a> to use this app")
+        return false;
+    } else {
+        return true;
+    }
 }
 
 async function faucet() {
@@ -237,24 +248,25 @@ async function faucet() {
     // } catch (error) {
     //     console.log(error);
     // }
-    try {
-        let tx = await signedContract.withdraw();
-        changeStatus("<span style='color: lightgreen;'>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
-        console.log(tx)
-    } catch (error) {
-        console.error(
-            'Error: ' + error.message
-        );
-        let index1 = "execution reverted: ";
-        let index2 = '","data":{"originalError":';
-        let error_msg = error.message.match(new RegExp(index1 + "(.*)" + index2));
-        if (error_msg !== null) {
-            changeStatus("<span style='color: salmon;'>Error: " + error_msg[1] + "</span>");
-        } else {
-            console.log(error.message);
+    if (checkNetwork()) {
+        try {
+            let tx = await signedContract.withdraw();
+            changeStatus("<span style='color: lightgreen;'>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
+            console.log(tx)
+        } catch (error) {
+            console.error(
+                'Error: ' + error.message
+            );
+            let index1 = "execution reverted: ";
+            let index2 = '","data":{"originalError":';
+            let error_msg = error.message.match(new RegExp(index1 + "(.*)" + index2));
+            if (error_msg !== null) {
+                changeStatus("<span style='color: salmon;'>Error: " + error_msg[1] + "</span>");
+            } else {
+                console.log(error.message);
+            }
         }
     }
-
 }
 
 const connectWallet = async () => {
@@ -274,10 +286,7 @@ const connectWallet = async () => {
                     // console.log(accounts);
                     // console.log(accounts[0]);
                     // console.log(ethereum.chainId)
-                    if (ethereum.chainId !== "0x4") {
-                        console.log("Switch to Rinkeby Network to use this app.")
-                        changeStatus("Switch to <a target='_blank' href='https://gist.github.com/zarifpour/309fdf60e6993a11a0ef8f72f1f95546'>Rinkeby Network</a> to use this app")
-                    } else {
+                    if (checkNetwork()) {
                         changeStatus("")
                     }
                     elemConnected();
@@ -333,6 +342,24 @@ const addNetwork = (params, accounts) => {
     console.log(toHex(43113))
 }
 
+const showCard1 = () => {
+    document.getElementById("card" + activeCard).style.display = "none";
+    activeCard = 1;
+    document.getElementById("card1").style.display = "block";
+}
+
+const showCard2 = () => {
+    document.getElementById("card" + activeCard).style.display = "none";
+    activeCard = 2;
+    document.getElementById("card2").style.display = "block";
+}
+
+const showCard3 = () => {
+    document.getElementById("card" + activeCard).style.display = "none";
+    activeCard = 3;
+    document.getElementById("card3").style.display = "block";
+}
+
 const Dapp = () => {
 
     // async function loadBlockchainData() {
@@ -353,22 +380,6 @@ const Dapp = () => {
     // const { activate, active } = useWeb3ReactCore() // specifically using useWeb3ReactCore because of what this hook does
 
     useEffect(() => {
-
-        // const handleChainChanged = () => {
-        //     // eat errors
-        //     activate(injected, undefined, true).catch((error) => {
-        //         console.error('Failed to activate after chain changed', error)
-        //     })
-        // }
-
-        // const handleAccountsChanged = (accounts) => {
-        //     if (accounts.length > 0) {
-        //         // eat errors
-        //         activate(injected, undefined, true).catch((error) => {
-        //             console.error('Failed to activate after accounts changed', error)
-        //         })
-        //     }
-        // }
 
         const handleChainChanged = () => {
             // eat errors
@@ -436,40 +447,87 @@ const Dapp = () => {
                 <Fade bottom>
                     <Meta title="Daniel Zarifpour | Dapps" />
                     {/* <div data-tip data-for="card-tip"> */}
-                    <div id="card-component-container" style={{ zIndex: "101" }}>
-                        <Card
-                            title="Faucet"
-                            description="Get some Zebra tokens on the Rinkeby Test Network to use my applications."
-                            link="/dapps"
-                        >
-                            <Fade>
-                                <div id="dapp-container" className="flex">
-                                    <div id="dapp-btns" className="responsive-container">
-                                        <button id="dapp1" className="btn-2">
-                                            <img src="/svg/drop.svg" alt="Faucet" />
-                                        </button>
-                                        <button id="dapp2" className="btn-2">
-                                            <img src="/svg/dollar.svg" alt="Auction" />
-                                        </button>
-                                        <button id="dapp3" className="btn-2">
-                                            <img src="/svg/archive.svg" alt="Poll" />
-                                        </button>
-                                    </div>
-                                </div>
-                            </Fade>
-                            <div className="flex">
-                                <button
-                                    id="faucet"
-                                    className="card-button connect-wallet"
-                                    onClick={connectWallet}
-                                >
-                                    <span>
-                                        Connect MetaMask
-                                        {/* <img style={{}} height="28px" width="28px" src="/img/ethereum-eth-logo.png" /> */}
-                                    </span>
+                    <div id="card-component-container" style={{ zIndex: "101", position: "absolute" }}>
+                        <div id="dapp-container" className="flex">
+                            <div id="dapp-btns" className="responsive-container">
+                                <button id="dapp1" onClick={showCard1} className="btn-2">
+                                    <img src="/svg/drop.svg" alt="Faucet" />
+                                </button>
+                                <button id="dapp2" onClick={showCard2} className="btn-2">
+                                    <img src="/svg/dollar.svg" alt="Auction" />
+                                </button>
+                                <button id="dapp3" onClick={showCard3} className="btn-2">
+                                    <img src="/svg/archive.svg" alt="Poll" />
                                 </button>
                             </div>
-                        </Card>
+                        </div>
+                        <div id="card1">
+                            <Card
+                                title="Faucet"
+                                description="Get some Zebra tokens on the Rinkeby Test Network to use my applications."
+                                link="/dapps"
+                            >
+                                {/* <Fade> */}
+
+                                {/* </Fade> */}
+                                <div className="flex">
+                                    <button
+                                        id="faucet"
+                                        className="card-button connect-wallet"
+                                        onClick={connectWallet}
+                                    >
+                                        <span>
+                                            Connect MetaMask
+                                            {/* <img style={{}} height="28px" width="28px" src="/img/ethereum-eth-logo.png" /> */}
+                                        </span>
+                                    </button>
+                                </div>
+                            </Card>
+                        </div>
+                        <div id="card2" style={{ display: "none" }}>
+                            <Card
+                                title="Ad Auction"
+                                description="This advertisement space will display the image of the highest bidder for 24 hours."
+                                link="/dapps"
+                            >
+                                {/* <Fade> */}
+                                {/* </Fade> */}
+                                <div className="flex">
+                                    <button
+                                        id="ad-auction"
+                                        className="card-button connect-wallet"
+                                        onClick={connectWallet}
+                                    >
+                                        <span>
+                                            Connect MetaMask
+                                            {/* <img style={{}} height="28px" width="28px" src="/img/ethereum-eth-logo.png" /> */}
+                                        </span>
+                                    </button>
+                                </div>
+                            </Card>
+                        </div>
+                        <div id="card3" style={{ display: "none" }}>
+                            <Card
+                                title="Election"
+                                description="Start an election and collect voting results at the end of the voting period."
+                                link="/dapps"
+                            >
+                                {/* <Fade> */}
+                                {/* </Fade> */}
+                                <div className="flex">
+                                    <button
+                                        id="election"
+                                        className="card-button connect-wallet"
+                                        onClick={connectWallet}
+                                    >
+                                        <span>
+                                            Connect MetaMask
+                                            {/* <img style={{}} height="28px" width="28px" src="/img/ethereum-eth-logo.png" /> */}
+                                        </span>
+                                    </button>
+                                </div>
+                            </Card>
+                        </div>
                     </div>
                     {/* </div> */}
                     {/* <ReactTooltip id="card-tip" role="example">
