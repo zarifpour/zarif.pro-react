@@ -426,15 +426,17 @@ const Dapp = () => {
 
             <Fade top>
                 <div id="dapp-container" className="flex">
-                    <button id="dapp1" class="dapp-btn">
-                        🚰
-                    </button>
-                    <button id="dapp2" class="dapp-btn">
-                        🗳
-                    </button>
-                    <button id="dapp3" class="dapp-btn">
-                        💰
-                    </button>
+                    <div>
+                        <button id="dapp1" class="dapp-btn">
+                            🚰
+                        </button>
+                        <button id="dapp2" class="dapp-btn">
+                            🗳
+                        </button>
+                        <button id="dapp3" class="dapp-btn">
+                            💰
+                        </button>
+                    </div>
                 </div>
             </Fade>
 

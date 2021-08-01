@@ -29,7 +29,7 @@ code {
 }
 #dapp-container {
   position: fixed;
-  top: 25%;
+  top: 20%;
   text-align: center;
   height: -moz-fit-content;
   height: fit-content;
@@ -40,14 +40,29 @@ code {
   font-size: clamp(16px, 3vw, 20px);
   height: 80px;
 }
+#dapp-container div {
+  border-radius: 25px;
+  background: rgb(34, 34, 34);
+}
 #dapp-container button {
   cursor: pointer;
   background: none;
-  font-size: 34px;
+  font-size: 32px;
   border: 0;
   margin: 10px;
-  width: 70px;
-  height: 65px;
+  width: 65px;
+  height: 60px;
+}
+
+#dapp-container button:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
+  border-radius: 25px;
+  transition: transform 0.2s ease 0s, box-shadow 0.2s ease 0s;
+  background: rgb(60, 60, 60);
+  /* background: -webkit-linear-gradient(#eee, #333); */
+  border: 1px solid rgb(60, 60, 60);
+  box-shadow: rgb(19 19 19) 0px 0px 0px, rgb(44 44 44) 0px 0px 0px;
 }
 #connection-status {
   position: fixed;
@@ -63,7 +78,7 @@ code {
   font-size: clamp(16px, 3vw, 20px);
   border: 0;
 }
-#connect-btn:hover, #dapp-container button:hover {
+#connect-btn:hover {
   transform: scale(1.02);
   transition: transform 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
   border-radius: 25px;
@@ -435,7 +450,7 @@ span::after {
 }
 
 @media only screen and (max-device-width: 480px) {
-    #only-desktop {
-        display: block !important;
-    }
+  #only-desktop {
+    display: block !important;
+  }
 }
