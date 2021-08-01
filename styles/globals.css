@@ -37,32 +37,16 @@ code {
   z-index: 100;
   cursor: pointer;
   pointer-events: auto;
-  font-size: clamp(16px, 3vw, 20px);
-  height: 80px;
 }
 #dapp-container div {
   border-radius: 25px;
+}
+#dapp-container div:hover {
   background: rgb(34, 34, 34);
 }
 #dapp-container button {
-  cursor: pointer;
-  background: none;
-  font-size: 28px;
-  border: 0;
-  margin: 10px;
-  width: 50px;
-  height: 45px;
-}
-
-#dapp-container button:hover {
-  transform: scale(1.02);
-  transition: transform 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
-  border-radius: 25px;
-  transition: transform 0.2s ease 0s, box-shadow 0.2s ease 0s;
-  background: rgb(60, 60, 60);
-  /* background: -webkit-linear-gradient(#eee, #333); */
-  border: 1px solid rgb(60, 60, 60);
-  box-shadow: rgb(19 19 19) 0px 0px 0px, rgb(44 44 44) 0px 0px 0px;
+  min-height: 0vw;
+  font-size: clamp(25px, 4vw, 40px);
 }
 #connection-status {
   position: fixed;
@@ -345,7 +329,14 @@ img.hover-img {
   }
 }
 
-
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: row;
+    height: 55px;
+}
 .btn-2 {
   position: relative;
   border: none;

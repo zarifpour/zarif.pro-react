@@ -426,14 +426,14 @@ const Dapp = () => {
 
             <Fade top>
                 <div id="dapp-container" className="flex">
-                    <div>
-                        <button id="dapp1" class="dapp-btn">
+                    <div id="dapp-btns" className="responsive-container">
+                        <button id="dapp1" class="btn-2">
                             <span>🚰</span>
                         </button>
-                        <button id="dapp2" class="dapp-btn">
+                        <button id="dapp2" class="btn-2">
                             <span>🗳</span>
                         </button>
-                        <button id="dapp3" class="dapp-btn">
+                        <button id="dapp3" class="btn-2">
                             <span>💰</span>
                         </button>
                     </div>
