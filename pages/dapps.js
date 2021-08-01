@@ -243,12 +243,13 @@ const Dapp = () => {
             //     // Time to reload your interface with accounts[0]!
             //     console.log(accounts[0])
             // })
+
+            // ethereum.on('chainChanged', handleChainChanged)
+            ethereum.on('accountsChanged', handleAccountsChanged)
+
         } else {
             console.log("Ethereum not detected.");
         }
-
-        // ethereum.on('chainChanged', handleChainChanged)
-        ethereum.on('accountsChanged', handleAccountsChanged)
 
     }, [])
 
@@ -270,7 +271,7 @@ const Dapp = () => {
             </Bounce>
 
             <div className="landing flex">
-                <Fade>
+                <Fade bottom>
                     <Meta title="Daniel Zarifpour | Dapps" />
                     {/* <div data-tip data-for="card-tip"> */}
                     <Card
