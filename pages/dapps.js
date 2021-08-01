@@ -424,7 +424,7 @@ const Dapp = () => {
                 </div>
             </Fade>
 
-            <Fade top>
+            <Fade>
                 <div id="dapp-container" className="flex">
                     <div id="dapp-btns" className="responsive-container">
                         <button id="dapp1" class="btn-2">

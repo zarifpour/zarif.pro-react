@@ -13,13 +13,13 @@ export const Footer = () => {
             <div className={`${footerStyles['button-wrapper']} fade-in anim-delay-4s flex`}>
                 <div className={footerStyles['responsive-container']}>
                     {footerButtons.map(button => (
-                        <button key={button.id} className="btn-2">
-                            <span>
-                                <a href={button.href} target="_blank" rel="noreferrer">
+                        <a key={button.id} href={button.href} target="_blank" rel="noreferrer">
+                            <button className="btn-2">
+                                <span>
                                     <img id={button.id} className="svg-icon" src={button.src} alt={button.alt} />
-                                </a>
-                            </span>
-                        </button>
+                                </span>
+                            </button>
+                        </a>
                     ))}
                 </div>
             </div>

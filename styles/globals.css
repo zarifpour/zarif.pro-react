@@ -37,6 +37,7 @@ code {
   z-index: 100;
   cursor: pointer;
   pointer-events: auto;
+  overflow: hidden;
 }
 #dapp-container div {
   border-radius: 25px;
@@ -66,16 +67,17 @@ code {
   transform: scale(1.02);
   transition: transform 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
   border-radius: 25px;
-  transition: transform 0.2s ease 0s, box-shadow 0.2s ease 0s;
+  transition: transform 0.04s ease 0s, box-shadow 0.04s ease 0s;
   background: rgb(34, 34, 34);
   /* background: -webkit-linear-gradient(#eee, #333); */
   border: 1px solid rgb(34, 34, 34);
   box-shadow: rgb(19 19 19) 0px 0px 0px, rgb(44 44 44) 0px 0px 0px;
 }
-#connect-btn:active {
-  box-shadow: 0px 0px 3px lightgrey;
+#connect-btn:hover:active {
+  /* box-shadow: 0px 0px 3px lightgrey;
   -webkit-box-shadow: 0px 0px 3px lightgrey;
-  box-shadow: 0px 0px 3px lightgrey;
+  box-shadow: 0px 0px 3px lightgrey; */
+  box-shadow: 0px 0px 8px #505050;
 }
 
 #connection-status.disconnected button {
@@ -293,7 +295,7 @@ img.hover-img {
   -webkit-box-shadow: 0px 0px 3px lightgrey;
   box-shadow: 0px 0px 3px lightgrey;
   transform: scale(1.02);
-  transition: transform 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
+  transition: transform 0.04s ease 0s, box-shadow 0.04s ease-out 0s;
 }
 
 .gradient-text {
@@ -359,13 +361,18 @@ img.hover-img {
   background: rgb(60, 60, 60);
   border: 0px solid rgb(60, 60, 60);
   transition: transform 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
-  transition: transform 0.2s ease 0s, box-shadow 0.2s ease 0s;
+  transition: transform 0.04s ease 0s, box-shadow 0.04s ease 0s;
   /* background: -webkit-linear-gradient(#eee, #333); */
   box-shadow: rgb(19 19 19) 0px 0px 0px, rgb(44 44 44) 0px 0px 0px;
 }
+.btn-2:hover:active {
+  /* box-shadow: 0px 0px 3px lightgrey */
+  /* box-shadow: 0px 0px 14px #505050; */
+  box-shadow: 0px 0px 8px #505050;
+}
 .btn-3:hover {
   transform: scale(1.2);
-  transition: transform 0.3s ease 0s, box-shadow 0.3s ease-out 0s;
+  transition: transform 0.04s ease 0s, box-shadow 0.04s ease-out 0s;
 }
 .btn-3::before,
 .btn-3::after {
