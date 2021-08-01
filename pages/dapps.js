@@ -93,7 +93,7 @@ const changeStatus = (status) => {
         document.getElementById("status-msg").style.animationName = animationName;
     }
     document.getElementById("status-msg").style.display = "block";
-    document.getElementById("status-msg").innerText = status;
+    document.getElementById("msg-content").innerHTML = status;
     document.getElementById("status-msg").onanimationend = () => {
         animationName = document.getElementById("status-msg").style.animationName;
         document.getElementById("status-msg").style.animationName = "none";
@@ -144,7 +144,7 @@ const connectWallet = async () => {
     } else {
         elemDisconnected();
         console.log("Install MetaMask to use this app.");
-        changeStatus("Install MetaMask to use this app");
+        changeStatus("Install <a target='_blank' href='https://metamask.io'>MetaMask</a> to use this app");
     }
 }
 

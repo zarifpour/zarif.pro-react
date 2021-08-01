@@ -20,6 +20,12 @@ code {
   z-index: 100;
   font-size: clamp(16px, 3vw, 20px);
 }
+#status-msg a {
+  text-decoration: underline;
+}
+#status-msg a:hover {
+  color: rgb(88, 166, 255);
+}
 #connection-status {
   position: fixed;
   top: 65px;
