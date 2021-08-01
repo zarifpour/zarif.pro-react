@@ -116,8 +116,8 @@ const connectWallet = async () => {
                     console.log(accounts[0]);
                     console.log(ethereum.chainId)
                     if (ethereum.chainId !== 0xa869) {
-                        console.log("Connect to Rinkeby Network to use this app.")
-                        changeStatus("Connect to <a target='_blank' href='https://gist.github.com/zarifpour/309fdf60e6993a11a0ef8f72f1f95546'>Rinkeby Network</a> to use this app")
+                        console.log("Switch to Rinkeby Network to use this app.")
+                        changeStatus("Switch to <a target='_blank' href='https://gist.github.com/zarifpour/309fdf60e6993a11a0ef8f72f1f95546'>Rinkeby Network</a> to use this app")
                     }
                     elemConnected();
                 }
@@ -214,7 +214,7 @@ const Dapp = () => {
             if (chain === "chainId") {
                 changeStatus("")
             } else {
-                changeStatus("Connect to <a target='_blank' href='https://gist.github.com/zarifpour/309fdf60e6993a11a0ef8f72f1f95546'>Rinkeby Network</a> to use this app")
+                changeStatus("Switch to <a target='_blank' href='https://gist.github.com/zarifpour/309fdf60e6993a11a0ef8f72f1f95546'>Rinkeby Network</a> to use this app")
             }
             activate(injected, undefined, true).catch((error) => {
                 console.error('Failed to activate after chain changed', error)
