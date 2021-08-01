@@ -16,7 +16,7 @@ const Card = ({ title, link, description, children }) => {
                     <p className={cardStyles["card-info"]}>
                         {description}
                     </p>
-                    <div id="child-container">{children}</div>
+                    <div id="child-container" style={{ position: "relative" }}>{children}</div>
                 </div>
             </div>
         </div>

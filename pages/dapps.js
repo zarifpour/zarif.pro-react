@@ -424,22 +424,6 @@ const Dapp = () => {
                 </div>
             </Fade>
 
-            <Fade>
-                <div id="dapp-container" className="flex">
-                    <div id="dapp-btns" className="responsive-container">
-                        <button id="dapp1" class="btn-2">
-                            <span>🚰</span>
-                        </button>
-                        <button id="dapp2" class="btn-2">
-                            <span>🗳</span>
-                        </button>
-                        <button id="dapp3" class="btn-2">
-                            <span>💰</span>
-                        </button>
-                    </div>
-                </div>
-            </Fade>
-
             <Bounce>
                 {/* style={{ display: "none" }} */}
                 <div id="status-msg" style={{ display: "none" }}>
@@ -457,6 +441,21 @@ const Dapp = () => {
                         description="Get some Zebra tokens on the Rinkeby Test Network to use my applications."
                         link="/dapps"
                     >
+                        <Fade>
+                            <div id="dapp-container" className="flex">
+                                <div id="dapp-btns" className="responsive-container">
+                                    <button id="dapp1" className="btn-2">
+                                        <img src="/svg/drop.svg" alt="Faucet" />
+                                    </button>
+                                    <button id="dapp2" className="btn-2">
+                                        <img src="/svg/dollar.svg" alt="Auction" />
+                                    </button>
+                                    <button id="dapp3" className="btn-2">
+                                        <img src="/svg/archive.svg" alt="Poll" />
+                                    </button>
+                                </div>
+                            </div>
+                        </Fade>
                         <div className="flex">
                             <button
                                 id="faucet"

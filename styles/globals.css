@@ -28,7 +28,7 @@ code {
   color: rgb(88, 166, 255);
 }
 #dapp-container {
-  position: fixed;
+  position: absolute;
   top: 20%;
   text-align: center;
   height: -moz-fit-content;
@@ -38,6 +38,8 @@ code {
   cursor: pointer;
   pointer-events: auto;
   overflow: hidden;
+  min-height: 0vw;
+  top: clamp(-290px, calc(40vw * -1), -240px);
 }
 #dapp-container div {
   border-radius: 25px;
@@ -46,8 +48,8 @@ code {
   background: rgb(34, 34, 34);
 }
 #dapp-container button {
-  min-height: 0vw;
-  font-size: clamp(25px, 4vw, 40px);
+  /* min-height: 0vw;
+  font-size: clamp(25px, 4vw, 40px); */
 }
 #connection-status {
   position: fixed;
@@ -62,6 +64,7 @@ code {
   min-height: 0vw; /* Safari Clamp Fix */
   font-size: clamp(16px, 3vw, 20px);
   border: 0;
+  padding-right: 9px;
 }
 #connect-btn:hover {
   /* transform: scale(1.02); */
