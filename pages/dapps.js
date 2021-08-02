@@ -408,7 +408,7 @@ async function adAuction() {
     // }
     if (checkNetwork()) {
         try {
-            let tx = await signedContract.withdraw();
+            let tx = await signedContract.bid("", "", "");
             changeStatus("<span style='color: lightgreen;'>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
             console.log(tx)
         } catch (error) {
@@ -807,37 +807,37 @@ const Dapp = () => {
                                         <img src="/img/placeholder.png" />
                                     </div>
                                     <div className="break" style={{ margin: "0" }}></div>
-                                    <form style={{ width: "-webkit-fill-available" }}>
-                                        <div className="input-container" style={{ marginBottom: "1em", display: "flex" }}>
-                                            <input
-                                                id="image-url"
-                                                type="url"
-                                                placeholder="Paste Image URL"
-                                                className="input-text"
-                                                style={{ width: "75%" }}
-                                            />
-                                            <input
-                                                id="bid"
-                                                type="number"
-                                                placeholder="Bid"
-                                                className="input-text"
-                                                style={{ width: "25%" }}
-                                            />
-                                        </div>
-                                        <div className="input-container" style={{ marginBottom: "1em" }}>
-                                        </div>
-                                        <button
-                                            id="ad-auction"
-                                            type="submit"
-                                            className="card-button connect-wallet"
-                                            onClick={connectWallet}
-                                        >
-                                            <span>
-                                                Connect MetaMask
-                                                {/* <img style={{}} height="28px" width="28px" src="/img/ethereum-eth-logo.png" /> */}
-                                            </span>
-                                        </button>
-                                    </form>
+                                    {/* <form style={{ width: "-webkit-fill-available" }}> */}
+                                    <div className="input-container" style={{ marginBottom: "1em", display: "flex" }}>
+                                        <input
+                                            id="image-url"
+                                            type="url"
+                                            placeholder="Paste Image URL"
+                                            className="input-text"
+                                            style={{ width: "75%" }}
+                                        />
+                                        <input
+                                            id="bid"
+                                            type="number"
+                                            placeholder="Bid"
+                                            className="input-text"
+                                            style={{ width: "25%" }}
+                                        />
+                                    </div>
+                                    <div className="input-container" style={{ marginBottom: "1em" }}>
+                                    </div>
+                                    <button
+                                        id="ad-auction"
+                                        type="submit"
+                                        className="card-button connect-wallet"
+                                        onClick={connectWallet}
+                                    >
+                                        <span>
+                                            Connect MetaMask
+                                            {/* <img style={{}} height="28px" width="28px" src="/img/ethereum-eth-logo.png" /> */}
+                                        </span>
+                                    </button>
+                                    {/* </form> */}
                                 </div>
                             </Card>
                         </div>
