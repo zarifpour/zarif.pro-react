@@ -759,7 +759,7 @@ const Dapp = () => {
                 <Fade bottom>
                     <Meta title="Daniel Zarifpour | Dapps" />
                     {/* <div data-tip data-for="card-tip"> */}
-                    <div id="card-component-container" style={{ zIndex: "101", position: "absolute" }}>
+                    <div id="card-component-container" style={{ zIndex: "101", position: "absolute", height: "34vh" }}>
                         <div id="dapp-container" className="flex">
                             <div id="dapp-btns" className="responsive-container">
                                 <button id="dapp1" onClick={showCard1} className="btn-2">
