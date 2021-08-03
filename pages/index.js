@@ -56,7 +56,7 @@ const Home = () => (
                             <Fade>
                                 <Card
                                     title="Dapps"
-                                    description="A faucet, an advertisement auction, a voting contract, and more coming soon – powered by my own token."
+                                    description="A faucet, an advertisement auction, a voting contract, and more coming soon – powered by my ERC-20 token."
                                     // description="A collection of decentralized applications, including a faucet, an advertisement auction, a voting contract, and more to come soon."
                                     link="/dapps"
                                 >
