@@ -8,6 +8,7 @@ body::-webkit-scrollbar-thumb {
 }
 body::-webkit-scrollbar {
     background: transparent;
+    width: 11px;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
