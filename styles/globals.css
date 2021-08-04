@@ -2,6 +2,13 @@ html,
 body {
   min-width: fit-content;
 }
+body::-webkit-scrollbar-thumb {
+    background: radial-gradient(#ffffff9c, #ffffff1a);
+    border-radius: 10px;
+}
+body::-webkit-scrollbar {
+    background: transparent;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

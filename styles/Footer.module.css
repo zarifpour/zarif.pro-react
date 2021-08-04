@@ -3,7 +3,7 @@
     position: fixed;
     height: fit-content;
     width: -webkit-fill-available;
-    z-index: 100;
+    z-index: 103;
 }
 .responsive-container {
     width: fit-content;

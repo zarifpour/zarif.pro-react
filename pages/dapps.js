@@ -36,8 +36,8 @@ export const RINKEBY_NETWORK_PARAMS = [{
         symbol: 'ETH',
         decimals: 18
     },
-    rpcUrls: ['https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161'],
-    blockExplorerUrls: ['https://rinkeby.etherscan.io']
+    rpcUrl: ['https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161'],
+    blockExplorerUrl: ['https://rinkeby.etherscan.io']
 }]
 
 export const AVALANCHE_MAINNET_PARAMS = {
@@ -598,6 +598,7 @@ const connectWallet = async () => {
                     // console.log(accounts);
                     // console.log(accounts[0]);
                     // console.log(ethereum.chainId)
+                    // addNetwork(RINKEBY_NETWORK_PARAMS, accounts)
                     if (checkNetwork()) {
                         changeStatus("")
                     }
@@ -749,7 +750,7 @@ const Dapp = () => {
 
             <Bounce>
                 {/* style={{ display: "none" }} */}
-                <div id="status-msg" style={{ display: "none" }}>
+                <div id="status-msg" style={{ display: "none", zIndex: "103" }}>
                     <span id="msg-content">This is a message</span>
                     <span id="only-desktop" style={{ display: "none" }}>(on your desktop)</span>
                 </div>
@@ -773,7 +774,7 @@ const Dapp = () => {
                                 </button>
                             </div>
                         </div>
-                        <div id="card1">
+                        <div id="card1" style={{ paddingBottom: "calc(3vw + 150px)" }}>
                             <Card
                                 title="Faucet"
                                 description="Get some Zebra tokens on the Rinkeby Test Network to use my applications."
@@ -796,7 +797,7 @@ const Dapp = () => {
                                 </div>
                             </Card>
                         </div>
-                        <div id="card2" style={{ display: "none" }}>
+                        <div id="card2" style={{ display: "none", paddingBottom: "calc(3vw + 250px)" }}>
                             <Card
                                 title="Ad Auction"
                                 description="This advertisement space displays the image of the highest bidder until they are outbid."
@@ -841,7 +842,7 @@ const Dapp = () => {
                                 </div>
                             </Card>
                         </div>
-                        <div id="card3" style={{ display: "none" }}>
+                        <div id="card3" style={{ display: "none", paddingBottom: "calc(3vw + 150px)" }}>
                             <Card
                                 title="Election"
                                 description="Start an election and collect voting results at the end of the voting period."
