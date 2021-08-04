@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 function Custom404() {
     return (
-        <div id="landing" className="flex noselect"> 
+        <div id="landing" className="flex noselect landing">
             <div className="title-box flex">
                 <div className="heading fade-in">404</div>
                 <div className="break"></div>
