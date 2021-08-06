@@ -7,7 +7,8 @@ interface IERC20 {
     function transfer(address recipient, uint256 amount)
         external
         returns (bool);
-
+    function approve(address spender, uint value) external returns (bool);
+    function transferFrom(address from, address to, uint value) external returns (bool);
     function balanceOf(address account) external view returns (uint256);
 
     event Transfer(address indexed from, address indexed to, uint256 value);
@@ -43,6 +44,7 @@ contract AdvertisementAuction is Ownable {
 
     function bid(string memory _adImageUrl, uint256 _amount) external {
         require(_amount > lastBid, "Your bid is lower than the last bid.");
+        Token.transferFrom(msg.sender, address(this), _amount);
         advertiser = msg.sender;
         adImageUrl = _adImageUrl;
         lastBid = _amount;

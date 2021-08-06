@@ -20,7 +20,6 @@ import { lastIndexOf } from "lodash";
 
 export const injected = new InjectedConnector({/*{ supportedChainIds: [43113] }*/ });
 // activate(injected);
-
 let ethereum = false
 let connected = false
 let activeCard = 1;
@@ -116,6 +115,44 @@ function checkNetwork() {
         return false;
     } else {
         return true;
+    }
+}
+
+async function approveToken(address, amount) {
+
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    const signer = provider.getSigner();
+
+    const tokenAddress = "0xE8690e96bEC46b1d7C0281a7FAf1589d20475a87"
+
+    const tokenAbi = ["function approve(address _spender, uint256 _value) public returns (bool success)"];
+
+    const tokenContract = new ethers.Contract(tokenAddress, tokenAbi, provider);
+
+    const signedContract = tokenContract.connect(signer);
+    // try {
+    //     await signedContract.estimateGas.withdraw();
+    // } catch (error) {
+    //     console.log(error);
+    // }
+    if (checkNetwork()) {
+        try {
+            let tx = await signedContract.approve(address, amount);
+            changeStatus("<span style='color: lightgreen;'>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
+            console.log("Approved " + address + " to withdraw " + amount + "\n\nTX:", tx)
+        } catch (error) {
+            console.error(
+                'Error: ' + error.message
+            );
+            let index1 = "execution reverted: ";
+            let index2 = '","data":{"originalError":';
+            let error_msg = error.message.match(new RegExp(index1 + "(.*)" + index2));
+            if (error_msg !== null) {
+                changeStatus("<span style='color: salmon;'>Error: " + error_msg[1] + "</span>");
+            } else {
+                console.log(error.message);
+            }
+        }
     }
 }
 
@@ -282,9 +319,9 @@ async function adAuction() {
     // console.log(provider);
     // console.log(signer);
 
-    const faucetAddress = "0xE8690e96bEC46b1d7C0281a7FAf1589d20475a87"
+    const auctionAddress = "0x574B0F0BbcE782439C1e9B7A362eD7a19d2d8f32"
 
-    const faucetAbi = [
+    const auctionAbi = [
         {
             "anonymous": false,
             "inputs": [
@@ -305,8 +342,71 @@ async function adAuction() {
             "type": "event"
         },
         {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "uint256",
+                    "name": "id",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "creator",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "url",
+                    "type": "string"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "bid",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "timestamp",
+                    "type": "uint256"
+                }
+            ],
+            "name": "PublishAdvertisement",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Withdrawal",
+            "type": "event"
+        },
+        {
             "inputs": [],
-            "name": "contractBalance",
+            "name": "adImageUrl",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "advertisementId",
             "outputs": [
                 {
                     "internalType": "uint256",
@@ -318,16 +418,86 @@ async function adAuction() {
             "type": "function"
         },
         {
+            "inputs": [],
+            "name": "advertiser",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
             "inputs": [
+                {
+                    "internalType": "string",
+                    "name": "_adImageUrl",
+                    "type": "string"
+                },
                 {
                     "internalType": "uint256",
                     "name": "_amount",
                     "type": "uint256"
                 }
             ],
-            "name": "liquidate",
+            "name": "bid",
             "outputs": [],
             "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "bidTimeStamp",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getImageUrl",
+            "outputs": [
+                {
+                    "internalType": "string",
+                    "name": "",
+                    "type": "string"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getLastBid",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "lastBid",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
             "type": "function"
         },
         {
@@ -365,19 +535,6 @@ async function adAuction() {
         },
         {
             "inputs": [],
-            "name": "waitTime",
-            "outputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "inputs": [],
             "name": "withdraw",
             "outputs": [],
             "stateMutability": "nonpayable",
@@ -398,9 +555,12 @@ async function adAuction() {
         }
     ];
 
-    const faucetContract = new ethers.Contract(faucetAddress, faucetAbi, provider);
+    const auctionContract = new ethers.Contract(auctionAddress, auctionAbi, provider);
 
-    const signedContract = faucetContract.connect(signer);
+    const signedContract = auctionContract.connect(signer);
+
+    let image = document.getElementById("image-url").value;
+    let amount = document.getElementById("bid").value;
     // try {
     //     await signedContract.estimateGas.withdraw();
     // } catch (error) {
@@ -408,22 +568,28 @@ async function adAuction() {
     // }
     if (checkNetwork()) {
         try {
-            let tx = await signedContract.bid("", "", "");
-            changeStatus("<span style='color: lightgreen;'>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
-            console.log(tx)
-        } catch (error) {
-            console.error(
-                'Error: ' + error.message
-            );
-            let index1 = "execution reverted: ";
-            let index2 = '","data":{"originalError":';
-            let error_msg = error.message.match(new RegExp(index1 + "(.*)" + index2));
-            if (error_msg !== null) {
-                changeStatus("<span style='color: salmon;'>Error: " + error_msg[1] + "</span>");
-            } else {
-                console.log(error.message);
-            }
+            let approval = await approveToken(auctionAddress, amount)
+            console.log("Approval:", approval)
+        } catch (err) {
+            console.log(err)
         }
+        // try {
+        //     let tx = await signedContract.bid(image, amount);
+        //     changeStatus("<span style='color: lightgreen;'>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
+        //     console.log(tx)
+        // } catch (error) {
+        //     console.error(
+        //         'Error: ' + error.message
+        //     );
+        //     let index1 = "execution reverted: ";
+        //     let index2 = '","data":{"originalError":';
+        //     let error_msg = error.message.match(new RegExp(index1 + "(.*)" + index2));
+        //     if (error_msg !== null) {
+        //         changeStatus("<span style='color: salmon;'>Error: " + error_msg[1] + "</span>");
+        //     } else {
+        //         console.log(error.message);
+        //     }
+        // }
     }
 }
 
