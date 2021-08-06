@@ -487,6 +487,10 @@ span::after {
   transition-delay: 0.6s;
 }
 
+#card-component-container2 #card1 div {
+min-width: 300px;
+}
+
 @media (any-hover: hover) {
   .gradient-text:hover {
     color: rgba(0, 0, 0, 0);
