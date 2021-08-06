@@ -71,11 +71,12 @@ const calculateProfit = () => {
 }
 
 const Mining = () => {
-
     useEffect(() => {
-        let x = 1
+        const next = document.getElementById('__next');
+        const main = next.children[0];
+        main.removeChild(main.children[0]);
+        main.removeChild(main.children[0]);
     }, [])
-
     return (
         <>
             <Head>
@@ -91,7 +92,7 @@ const Mining = () => {
 
             <div className="landing flex">
                 <Fade bottom>
-                    <Meta title="Daniel Zarifpour | Dapps" />
+                    <Meta title="Daniel Zarifpour | Mining" />
                     {/* <div data-tip data-for="card-tip"> */}
                     <div id="card-component-container2" style={{ zIndex: "101" }}>
                         {/* <div id="dapp-container" className="flex">
