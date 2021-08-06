@@ -58,15 +58,16 @@ const calculateProfit = () => {
     let difference = totalProfit - totalCostRig;
     let breakeven = breakevenMonth(allRigsProfitMonth, totalCostRig, monthMiningFee, variableFee);
     alert(`
-        *************
-        * ${months} month(s) *
-        *************
+        **************
+        ${months} month(s)
+        **************
         
         COST: ${totalCostRig}
         PROFIT: ${totalProfit}
-        FEE: ${totalMiningFee}
         TOTAL: ${difference}
+
         BREAKEVEN: ${breakeven}
+        FEE: ${totalMiningFee}
     `)
 }
 
