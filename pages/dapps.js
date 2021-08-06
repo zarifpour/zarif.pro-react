@@ -924,7 +924,7 @@ const Dapp = () => {
 
             <div className="landing flex">
                 <Fade bottom>
-                    <Meta title="Daniel Zarifpour | DApps" />
+                    <Meta title="Daniel Zarifpour | Dapps" />
                     {/* <div data-tip data-for="card-tip"> */}
                     <div id="card-component-container" style={{ zIndex: "101", position: "absolute", height: "34vh" }}>
                         <div id="dapp-container" className="flex">

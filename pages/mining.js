@@ -66,7 +66,7 @@ const calculateProfit = () => {
         PROFIT: ${totalProfit}
         TOTAL: ${difference}
 
-        BREAKEVEN: ${breakeven}
+        BREAKEVEN: ${breakeven} month(s)
         FEE: ${totalMiningFee}
     `)
 }
