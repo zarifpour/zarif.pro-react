@@ -139,7 +139,8 @@ async function approveToken(address, amount) {
         try {
             let tx = await signedContract.approve(address, amount);
             changeStatus("<span style='color: lightgreen;'>Approval successful.<br><br>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
-            console.log("Approved " + address + " to withdraw " + amount + " tokens.\n\nTXN:", tx)
+            console.log("Approved " + address + " to withdraw " + amount / 1000000000000000000n + " tokens.\n\nTXN:", tx)
+            adAuction();
         } catch (error) {
             console.error(
                 'Error: ' + error.message
@@ -310,8 +311,9 @@ async function faucet() {
     }
 }
 
-function loadAdImage(imgUrl) {
+function loadAd(imgUrl, bid) {
     document.getElementById("a-img-url").src = imgUrl;
+    document.getElementById("current-bid").innerHTML = bid;
 }
 
 async function adAuction() {
@@ -565,6 +567,7 @@ async function adAuction() {
 
     let image = document.getElementById("image-url").value;
     let amount = document.getElementById("bid").value;
+    amount = BigInt(amount) * 1000000000000000000n;
     // try {
     //     await signedContract.estimateGas.withdraw();
     // } catch (error) {
@@ -572,16 +575,10 @@ async function adAuction() {
     // }
     if (checkNetwork()) {
         try {
-            let approval = await approveToken(auctionAddress, amount)
-            console.log("Approval:", approval)
-        } catch (err) {
-            console.log(err)
-        }
-        try {
             let tx = await signedContract.bid(image, amount);
             changeStatus("<span style='color: lightgreen;'>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
             console.log(tx)
-            loadAdImage(image)
+            loadAd(image, amount / 1000000000000000000n)
         } catch (error) {
             console.error(
                 'Error: ' + error.message
@@ -590,6 +587,17 @@ async function adAuction() {
             let index2 = '","data":{"originalError":';
             let error_msg = error.message.match(new RegExp(index1 + "(.*)" + index2));
             if (error_msg !== null) {
+                if (error_msg[1] === "ERC20: transfer amount exceeds allowance") {
+                    // console.log("check")
+                    try {
+                        console.log("here")
+                        let approval = await approveToken(auctionAddress, amount)
+                        console.log("Approval:", approval)
+                    } catch (err) {
+                        console.log(err)
+                        console.log(amount)
+                    }
+                }
                 changeStatus("<span style='color: salmon;'>Error: " + error_msg[1] + "</span>");
             } else {
                 console.log(error.message);
@@ -888,12 +896,285 @@ const Dapp = () => {
             }
         }
 
+        async function loadAdAuction() {
+            // console.log('onClick Function changed successfully!');
+
+            const provider = new ethers.providers.Web3Provider(ethereum);
+
+            // console.log(provider);
+            // console.log(signer);
+
+            const auctionAddress = "0x574B0F0BbcE782439C1e9B7A362eD7a19d2d8f32"
+
+            const auctionAbi = [
+                {
+                    "anonymous": false,
+                    "inputs": [
+                        {
+                            "indexed": true,
+                            "internalType": "address",
+                            "name": "previousOwner",
+                            "type": "address"
+                        },
+                        {
+                            "indexed": true,
+                            "internalType": "address",
+                            "name": "newOwner",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "OwnershipTransferred",
+                    "type": "event"
+                },
+                {
+                    "anonymous": false,
+                    "inputs": [
+                        {
+                            "indexed": true,
+                            "internalType": "uint256",
+                            "name": "id",
+                            "type": "uint256"
+                        },
+                        {
+                            "indexed": true,
+                            "internalType": "address",
+                            "name": "creator",
+                            "type": "address"
+                        },
+                        {
+                            "indexed": false,
+                            "internalType": "string",
+                            "name": "url",
+                            "type": "string"
+                        },
+                        {
+                            "indexed": false,
+                            "internalType": "uint256",
+                            "name": "bid",
+                            "type": "uint256"
+                        },
+                        {
+                            "indexed": false,
+                            "internalType": "uint256",
+                            "name": "timestamp",
+                            "type": "uint256"
+                        }
+                    ],
+                    "name": "PublishAdvertisement",
+                    "type": "event"
+                },
+                {
+                    "anonymous": false,
+                    "inputs": [
+                        {
+                            "indexed": false,
+                            "internalType": "uint256",
+                            "name": "amount",
+                            "type": "uint256"
+                        }
+                    ],
+                    "name": "Withdrawal",
+                    "type": "event"
+                },
+                {
+                    "inputs": [],
+                    "name": "adImageUrl",
+                    "outputs": [
+                        {
+                            "internalType": "string",
+                            "name": "",
+                            "type": "string"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "advertisementId",
+                    "outputs": [
+                        {
+                            "internalType": "uint256",
+                            "name": "",
+                            "type": "uint256"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "advertiser",
+                    "outputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "string",
+                            "name": "_adImageUrl",
+                            "type": "string"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "_amount",
+                            "type": "uint256"
+                        }
+                    ],
+                    "name": "bid",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "bidTimeStamp",
+                    "outputs": [
+                        {
+                            "internalType": "uint256",
+                            "name": "",
+                            "type": "uint256"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "getImageUrl",
+                    "outputs": [
+                        {
+                            "internalType": "string",
+                            "name": "",
+                            "type": "string"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "getLastBid",
+                    "outputs": [
+                        {
+                            "internalType": "uint256",
+                            "name": "",
+                            "type": "uint256"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "lastBid",
+                    "outputs": [
+                        {
+                            "internalType": "uint256",
+                            "name": "",
+                            "type": "uint256"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "owner",
+                    "outputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "renounceOwnership",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "newOwner",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "transferOwnership",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "withdraw",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "zebraToken",
+                    "outputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                }
+            ];
+
+            const auctionContract = new ethers.Contract(auctionAddress, auctionAbi, provider);
+
+            if (checkNetwork()) {
+                try {
+                    let tx = await auctionContract.getImageUrl();
+                    let tx2 = await auctionContract.lastBid();
+                    tx2 = BigInt(tx2) / 1000000000000000000n;
+                    console.log(tx)
+                    console.log(tx2)
+                    loadAd(tx, tx2)
+
+                } catch (error) {
+                    console.error(
+                        'Error: ' + error.message
+                    );
+                    let index1 = "execution reverted: ";
+                    let index2 = '","data":{"originalError":';
+                    let error_msg = error.message.match(new RegExp(index1 + "(.*)" + index2));
+                    if (error_msg !== null) {
+                        changeStatus("<span style='color: salmon;'>Error: " + error_msg[1] + "</span>");
+                    } else {
+                        console.log(error.message);
+                    }
+                }
+            }
+        }
+
 
         if (typeof window.ethereum !== 'undefined') {
 
             ethereum = window.ethereum
 
             console.log('Ethereum detected.')
+
+            loadAdAuction();
 
             // ethereum.on('accountsChanged', function (accounts) {
             //     // Time to reload your interface with accounts[0]!
@@ -975,6 +1256,10 @@ const Dapp = () => {
                                 link="/dapps"
                             >
                                 <div className="flex">
+                                    <div style={{ position: "absolute", right: "0" }}>
+                                        Bid: <span id="current-bid">...</span>
+                                    </div>
+                                    <div className="break" style={{ margin: "0" }}></div>
                                     <div id="place-here" style={{ marginBottom: "1em" }}>
                                         <img id="a-img-url" src="/img/placeholder.png" />
                                     </div>
