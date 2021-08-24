@@ -123,7 +123,7 @@ async function approveToken(address, amount) {
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = provider.getSigner();
 
-    const tokenAddress = "0xE8690e96bEC46b1d7C0281a7FAf1589d20475a87"
+    const tokenAddress = "0xeED62950d07f80d2890B418871055846ACB6b9d0"
 
     const tokenAbi = ["function approve(address _spender, uint256 _value) public returns (bool success)"];
 
@@ -138,8 +138,8 @@ async function approveToken(address, amount) {
     if (checkNetwork()) {
         try {
             let tx = await signedContract.approve(address, amount);
-            changeStatus("<span style='color: lightgreen;'>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
-            console.log("Approved " + address + " to withdraw " + amount + "\n\nTX:", tx)
+            changeStatus("<span style='color: lightgreen;'>Approval successful.<br><br>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
+            console.log("Approved " + address + " to withdraw " + amount + " tokens.\n\nTXN:", tx)
         } catch (error) {
             console.error(
                 'Error: ' + error.message
@@ -308,6 +308,10 @@ async function faucet() {
             }
         }
     }
+}
+
+function loadAdImage(imgUrl) {
+    document.getElementById("a-img-url").src = imgUrl;
 }
 
 async function adAuction() {
@@ -573,23 +577,24 @@ async function adAuction() {
         } catch (err) {
             console.log(err)
         }
-        // try {
-        //     let tx = await signedContract.bid(image, amount);
-        //     changeStatus("<span style='color: lightgreen;'>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
-        //     console.log(tx)
-        // } catch (error) {
-        //     console.error(
-        //         'Error: ' + error.message
-        //     );
-        //     let index1 = "execution reverted: ";
-        //     let index2 = '","data":{"originalError":';
-        //     let error_msg = error.message.match(new RegExp(index1 + "(.*)" + index2));
-        //     if (error_msg !== null) {
-        //         changeStatus("<span style='color: salmon;'>Error: " + error_msg[1] + "</span>");
-        //     } else {
-        //         console.log(error.message);
-        //     }
-        // }
+        try {
+            let tx = await signedContract.bid(image, amount);
+            changeStatus("<span style='color: lightgreen;'>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
+            console.log(tx)
+            loadAdImage(image)
+        } catch (error) {
+            console.error(
+                'Error: ' + error.message
+            );
+            let index1 = "execution reverted: ";
+            let index2 = '","data":{"originalError":';
+            let error_msg = error.message.match(new RegExp(index1 + "(.*)" + index2));
+            if (error_msg !== null) {
+                changeStatus("<span style='color: salmon;'>Error: " + error_msg[1] + "</span>");
+            } else {
+                console.log(error.message);
+            }
+        }
     }
 }
 
@@ -971,7 +976,7 @@ const Dapp = () => {
                             >
                                 <div className="flex">
                                     <div id="place-here" style={{ marginBottom: "1em" }}>
-                                        <img src="/img/placeholder.png" />
+                                        <img id="a-img-url" src="/img/placeholder.png" />
                                     </div>
                                     <div className="break" style={{ margin: "0" }}></div>
                                     {/* <form style={{ width: "-webkit-fill-available" }}> */}
