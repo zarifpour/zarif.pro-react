@@ -1258,7 +1258,7 @@ const Dapp = () => {
                                 link="/dapps"
                             >
                                 <div className="flex">
-                                    <div style={{ position: "absolute", right: "0" }}>
+                                    <div style={{ position: "absolute", right: "0", top: "0" }}>
                                         Bid: <span id="current-bid">...</span>
                                     </div>
                                     <div className="break" style={{ margin: "0" }}></div>
