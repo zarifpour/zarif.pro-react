@@ -138,9 +138,13 @@ async function approveToken(address, amount) {
     if (checkNetwork()) {
         try {
             let tx = await signedContract.approve(address, amount);
+            document.getElementById('ad-auction').innerText = "Approving...";
+            document.getElementById('ad-auction').disabled = true;
+            let receipt = await provider.waitForTransaction(tx.hash);
+            console.log(receipt);
+            adAuction();
             changeStatus("<span style='color: lightgreen;'>Approval successful.<br><br>TXN: <a target='_blank' href='https://rinkeby.etherscan.io/tx/" + tx.hash + "'>" + tx.hash + "</a></span>");
             console.log("Approved " + address + " to withdraw " + amount / 1000000000000000000n + " tokens.\n\nTXN:", tx)
-            adAuction();
         } catch (error) {
             console.error(
                 'Error: ' + error.message
@@ -154,6 +158,8 @@ async function approveToken(address, amount) {
                 console.log(error.message);
             }
         }
+        document.getElementById('ad-auction').innerText = "Place Bid";
+        document.getElementById('ad-auction').disabled = false;
     }
 }
 
@@ -589,14 +595,10 @@ async function adAuction() {
             if (error_msg !== null) {
                 if (error_msg[1] === "ERC20: transfer amount exceeds allowance") {
                     // console.log("check")
-                    try {
-                        console.log("here")
-                        let approval = await approveToken(auctionAddress, amount)
-                        console.log("Approval:", approval)
-                    } catch (err) {
-                        console.log(err)
-                        console.log(amount)
-                    }
+                    // console.log("here")
+                    // let approval = await approveToken(auctionAddress, amount)
+                    // console.log("Approval:", approval)
+                    approveToken(auctionAddress, amount);
                 }
                 changeStatus("<span style='color: salmon;'>Error: " + error_msg[1] + "</span>");
             } else {
