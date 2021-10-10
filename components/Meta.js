@@ -17,7 +17,7 @@ const Meta = ({ title, keywords, description }) => {
 }
 
 Meta.defaultProps = {
-    title: "Daniel Zarifpour",
+    title: "@zarifpour",
     keywords: "web development, software engineering, programming, blockchain",
     description: "Creator | Engineer. I am a Blockchain passioned Full-stack engineer — making complex ideas into simple applications."
 }

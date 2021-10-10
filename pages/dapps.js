@@ -1151,6 +1151,7 @@ const Dapp = () => {
                     tx2 = BigInt(tx2) / 1000000000000000000n;
                     console.log(tx)
                     console.log(tx2)
+                    // if (tx.trim) // last place forgot why I was doing this maybe to see if no network detected... ah yes I remember for no image load default
                     loadAd(tx, tx2)
 
                 } catch (error) {
