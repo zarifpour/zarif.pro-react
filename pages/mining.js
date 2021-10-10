@@ -93,7 +93,7 @@ const Mining = () => {
 
             <div className="landing flex">
                 <Fade bottom>
-                    <Meta title="Daniel Zarifpour | Mining" />
+                    <Meta title="@zarifpour | Mining Calculator" />
                     {/* <div data-tip data-for="card-tip"> */}
                     <div id="card-component-container2" style={{ zIndex: "101" }}>
                         {/* <div id="dapp-container" className="flex">
