@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars as Space } from "@react-three/drei";
 // import * as THREE from "three";
-import star from "../public/img/star.png"
+// import star from "../public/img/star.png"
 import starsStyles from '../styles/Stars.module.css'
 
 // function useWindowSize() {
@@ -117,7 +117,7 @@ export const Stars = () => {
     return (
         <Canvas id={starsStyles['star-canvas']} className="fade-in">
             {/* <OrbitControls /> */}
-            <Space />
+            <Space count={996} depth={200} factor={4} radius={100} saturation={996} />
         </Canvas>
     )
 }

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import ReactFullpage from '@fullpage/react-fullpage';
-import styles from '../styles/Home.module.css'
-import Card from '../components/Card'
-import { Skills } from '../components/Skills'
-import { Scroll } from '../components/Scroll'
+import styles from '../styles/Home.module.css';
+import Card from '../components/Card';
+import { Skills } from '../components/Skills';
+import { Scroll } from '../components/Scroll';
 import Fade from 'react-reveal/Fade';
-import Link from 'next/link'
-import Router from 'next/router'
+import Link from 'next/link';
+import Router from 'next/router';
 
 const ViewApps = React.forwardRef(({ onClick, href }, ref) => {
     return (

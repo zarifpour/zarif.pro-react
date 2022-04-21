@@ -1,0 +1,24 @@
+.footer {
+    bottom: 25px;
+    position: fixed;
+    height: fit-content;
+    width: -webkit-fill-available;
+    z-index: 103;
+}
+.responsive-container {
+    width: fit-content;
+}
+.responsive-container:hover {
+    border-radius: 25px;
+    transition: transform 0.04s ease 0s, box-shadow 0.04s ease 0s;
+    background: rgb(34, 34, 34);
+    overflow: hidden;
+}
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: row;
+    height: 55px;
+}

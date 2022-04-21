@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Cthulu';
+  src: local('JMHCthulhumbusArcadeUG-Regular'), url(/public/fonts/JMHCthulhumbusArcade/JMHCthulhumbusArcadeUG-Regular.ttf);
+}
+@font-face {
+  font-family: 'LightPixel';
+  src: local('Light Pixel-7'), url(/public/fonts/LightPixel/light_pixel-7.ttf);
+}
 html,
 body {
   min-width: fit-content;
@@ -158,9 +166,7 @@ body {
   min-height: -webkit-fill-available;
   /* MOBILE LANDING FIX */
 }
-button {
-  background: lightgray;
-}
+
 .click {
   pointer-events: auto;
 }
@@ -261,10 +267,11 @@ a {
 }
 .title-box {
   font-size: 60px;
+  font-family: "Cthulu", sans-serif;
   letter-spacing: 7px;
   /* word-spacing: 12px; */
   word-spacing: 5px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   /* width: min-content; */
 }
 .title-box,
@@ -431,7 +438,7 @@ img.hover-img {
   background: linear-gradient(to left, gold, salmon);
 }
 
-span::before,
+/* span::before,
 span::after {
   content: "";
   width: 2px;
@@ -444,7 +451,7 @@ span::before {
 }
 span::after {
   background: linear-gradient(to top, yellow, springgreen, cyan);
-}
+} */
 .btn-3:hover::before,
 .btn-3:hover::after {
   width: 100%;

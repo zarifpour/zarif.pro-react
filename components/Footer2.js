@@ -14,7 +14,7 @@ export const Footer = () => {
                 <div className={footerStyles['responsive-container']}>
                     {footerButtons.map(button => (
                         <a key={button.id} href={button.href} target="_blank" rel="external" draggable="false">
-                            <button className={`${footerStyles['glow-on-hover']} glow-on-hover`}>
+                            <button className="btn-2">
                                 <span>
                                     <img id={button.id} className="svg-icon" src={button.src} alt={button.alt} draggable="false" />
                                 </span>
