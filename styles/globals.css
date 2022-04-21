@@ -523,6 +523,10 @@ min-width: 300px;
     3px 3px 0px #FF0000;
 }
 
+.svg-icon {
+   filter: drop-shadow(-.15px -.15px 0px white) drop-shadow(.15px .15px 0px white) drop-shadow(.3px .3px 0px #FF0000) drop-shadow(.4px .4px 0px #FF7F00) drop-shadow(.5px .5px 0px #FFFF00) drop-shadow(.6px .6px 0px #00FF00) drop-shadow(.7px .7px 0px #0000FF) drop-shadow(.8px .8px 0px #2E2B5F) drop-shadow(.9px .9px 0px #8B00FF) drop-shadow(1px 1px 0px #FF0000);
+}
+
 @media (any-hover: hover) {
   .gradient-text:hover {
     color: rgba(0, 0, 0, 0);
