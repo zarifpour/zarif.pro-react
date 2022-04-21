@@ -119,3 +119,9 @@
         transform: scale(1.2) translateY(-20px);
     }
 }
+
+@media only screen and (max-device-width: 400px) {
+    .responsive-container {
+        transform: scale(.8) translateY(10px);
+    }
+}
