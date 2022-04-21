@@ -344,6 +344,7 @@ img.hover-img {
   width: -webkit-fill-available;
   height: clamp(35px, 6.5vw, 60px);
   /* background: -webkit-linear-gradient(#eee, #565656); */
+  color: black;
 }
 .card-button:active {
   color: white;
