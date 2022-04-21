@@ -10,6 +10,7 @@
 }
 .responsive-container {
     width: fit-content;
+    background: black;
 }
 /* .responsive-container:hover {
     border-radius: 25px;
@@ -53,6 +54,7 @@
   transition: opacity .3s ease-in-out;
   border-radius: 15px;
   padding: 0px 15px;
+  -webkit-transform: translate3d(0, 0, 0); /* Safari border fix */
 }
 
 .glow-on-hover:active {
