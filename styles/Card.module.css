@@ -1,7 +1,8 @@
 #card-container {}
 .card {
     /* border: solid 1px gray; */
-    background: rgb(6, 6, 8);
+    /* background: rgb(6, 6, 8); */
+    background: black;
     border-radius: 8px;
     padding: 1.5em;
     pointer-events: auto;
@@ -19,6 +20,18 @@ p.card-title {
     min-height: 0vw; /* Safari Clamp Fix */
     font-size: clamp(21px, 3.5vw, 34px);
     font-family: "Cthulu", sans-serif;
+    text-shadow: -0.1vw -0.1vw 0px white, 
+    0.1vw 0.1vw 0px white, 
+    0.2vw 0.2vw 0px #ff0000, 
+    0.25vw 0.25vw 0px #ff7f00, 
+    0.3vw 0.3vw 0px #ffff00, 
+    0.35vw 0.35vw 0px #00ff00, 
+    0.4vw 0.4vw 0px #0000ff, 
+    0.45vw 0.45vw 0px #2e2b5f, 
+    0.5vw 0.5vw 0px #8b00ff, 
+    0.55vw 0.55vw 0px #ff0000, 
+    0.6vw 0.6vw 0px #ff0000;
+    color: black;
 }
 p.card-title > span:hover {
     /* text-decoration: underline; */

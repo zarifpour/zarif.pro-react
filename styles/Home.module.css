@@ -2,11 +2,31 @@
     width: max-content;
     /* font-size: 4vw; */
     min-height: 0vw; /* Safari Clamp Fix */
-    font-size: clamp(23px, 4.5vw, 62px);
+    font-size: clamp(26px, 6vw, 62px);
     font-weight: 300;
-    /* font-size: 7vw; */
-    /* font-size: clamp(1rem, 0.4706rem + 2.8235vw, 4rem); */
     /* text-transform: capitalize; */
+    color: black;
+    /* text-shadow: -.1vw -.1vw 0px white,
+      .1vw .1vw 0px white,
+      .2vw .2vw 0px #eb452b, 
+      .25vw .25vw 0px #efa032, 
+      .3vw .3vw 0px #46b59b, 
+      .35vw .35vw 0px #017e7f, 
+      .4vw .4vw 0px #052939, 
+      .45vw .45vw 0px #c11a2b, 
+      .5vw .5vw 0px #c11a2b; */
+
+    text-shadow: -.1vw -.1vw 0px white,
+      .1vw .1vw 0px white,
+      .2vw .2vw 0px #FF0000, 
+      .25vw .25vw 0px #FF7F00, 
+      .3vw .3vw 0px #FFFF00, 
+      .35vw .35vw 0px #00FF00, 
+      .4vw .4vw 0px #0000FF, 
+      .45vw .45vw 0px #2E2B5F, 
+      .5vw .5vw 0px #8B00FF, 
+      .55vw .55vw 0px #FF0000, 
+      .6vw .6vw 0px #FF0000;
 }
 .zarif-2 {
     /* font-size: 2.25vw; */
@@ -14,6 +34,9 @@
     font-size: clamp(14px, 2.53vw, 34.875px);
     display: flex;
     font-weight: 300;
+    color: black;
+    text-shadow: -.05vw -.05vw 0px white,
+      .05vw .05vw 0px white;
 }
 .creator {
     padding-right: 12px;
@@ -39,5 +62,39 @@
   } */
   .lh-bug { /* for letter spacing bug */
     line-height: 3.5vw;
+  }
 }
+/* @media (max-width: 380px) {
+  .zarif { 
+    font-size: .45em;
+  }
 }
+@media (min-width: 381px) {
+  .zarif { 
+    font-size: .5em;
+  }
+}
+@media (min-width: 600px) {
+  .zarif { 
+    font-size: .7em;
+  }
+}
+@media (min-width: 800px) {
+  .zarif { 
+    font-size: 1em;
+  }
+}
+@media (min-width: 900px) {
+  .zarif { 
+    font-size: 1.2em;
+  }
+}
+@media (min-width: 1234px) {
+  .zarif { 
+    font-size: 1.5em;
+  }
+} */
+
+
+    
+
