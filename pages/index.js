@@ -44,9 +44,9 @@ const Home = () => (
                                     <div className={`${styles['ls-bug']} gradient ${styles['zarif']} fade-in`}>Daniel Zarifpour</div>
                                     <div className="break"></div>
                                     <div className={`${styles['zarif-2']} fade-in anim-delay-2s`}>
-                                        <div className={`${styles['ls-bug']} gradient`}>Creator</div>
+                                        <div className={`${styles['ls-bug']} ${styles['creator']} gradient`}>Creator</div>
                                         <div className={`${styles['ls-bug']} ${styles['lh-bug']} gradient`} style={{ margin: "0px 12px" }}>|</div>
-                                        <div className={`${styles['ls-bug']} gradient`}>Engineer</div>
+                                        <div className={`${styles['ls-bug']} ${styles['engineer']} gradient`}>Engineer</div>
                                     </div>
                                 </div>
                             </div>

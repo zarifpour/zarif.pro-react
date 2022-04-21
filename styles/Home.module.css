@@ -15,12 +15,19 @@
     display: flex;
     font-weight: 300;
 }
+.creator {
+    padding-right: 12px;
+}
+.engineer {
+    padding-left: 19px !important;
+}
 .ls-bug { /* for letter spacing bug */
     padding-left: 7px; 
 }
 .lh-bug { /* for letter spacing bug */
     min-height: 0vw; /* Safari Clamp Fix */
     line-height: clamp(12px, 2.53vw, 34.875px);
+    display: contents;
 }
 
 @media (max-width: 460px) {
