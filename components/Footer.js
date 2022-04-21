@@ -1,10 +1,11 @@
 import footerStyles from '../styles/Footer.module.css'
 
 const footerButtons = [
-    { href: "https://www.github.com/zarifpour", id: "github-svg", src: "/svg/github.svg", alt: "Github" },
-    { href: "https://dzarif.medium.com", id: "medium-svg", src: "/svg/medium.svg", alt: "Medium" },
+    { href: "https://www.twitter.com/dzar1f", id: "twitter-svg", src: "/svg/twitter.svg", alt: "Twitter" },
     { href: "https://www.linkedin.com/in/zarifpour/", id: "linkedin-svg", src: "/svg/linkedin.svg", alt: "LinkedIn" },
-    { href: "mailto:daniel@zarif.pro", id: "mail-svg", src: "/svg/mail.svg", alt: "E-Mail" }
+    { href: "https://www.github.com/zarifpour", id: "github-svg", src: "/svg/github.svg", alt: "Github" },
+    // { href: "https://dzarif.medium.com", id: "medium-svg", src: "/svg/medium.svg", alt: "Medium" },
+    // { href: "mailto:daniel@zarif.pro", id: "mail-svg", src: "/svg/mail.svg", alt: "E-Mail" },
 ];
 
 export const Footer = () => {
