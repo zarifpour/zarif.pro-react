@@ -512,14 +512,14 @@ min-width: 300px;
 .title-shadow {
     text-shadow: -.3px -.3px 0px white,
     .3px .3px 0px white,
-    .6px .6px 0px #FF0000, 
-    .9px .9px 0px #FF7F00, 
-    1.25px 1.25px 0px #FFFF00, 
-    1.5px 1.5px 0px #00FF00, 
-    1.75px 1.75px 0px #0000FF, 
-    2px 2px 0px #2E2B5F, 
-    2.25px 2.25px 0px #8B00FF, 
-    2.5px 2.5px 0px #FF0000, 
+    .9px .9px 0px #FF0000, 
+    1.2px 1.2px 0px #FF7F00, 
+    1.5px 1.5px 0px #FFFF00, 
+    1.8px 1.8px 0px #00FF00, 
+    2.1px 2.1px 0px #0000FF, 
+    2.4px 2.4px 0px #2E2B5F, 
+    2.7px 2.7px 0px #8B00FF, 
+    2.7px 2.7px 0px #FF0000, 
     3px 3px 0px #FF0000;
 }
 
