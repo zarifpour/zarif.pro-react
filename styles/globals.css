@@ -2,10 +2,10 @@
     font-family: 'Cthulu';
     src: local('JMHCthulhumbusArcade-Regular'), url('/public/fonts/JMHCthulhumbusArcade/jmh_cthulhumbus_arcade-webfont.eot');
     src: local('JMHCthulhumbusArcade-Regular'), url('/public/fonts/JMHCthulhumbusArcade/jmh_cthulhumbus_arcade-webfont.eot?#iefix') format('embedded-opentype'),
-         local('JMHCthulhumbusArcade-Regular'), url('../public/fonts/JMHCthulhumbusArcade/jmh_cthulhumbus_arcade-webfont.woff2') format('woff2'),
-         local('JMHCthulhumbusArcade-Regular'), url('../public/fonts/JMHCthulhumbusArcade/jmh_cthulhumbus_arcade-webfont.woff') format('woff'),
-         local('JMHCthulhumbusArcade-Regular'), url('/public/fonts/JMHCthulhumbusArcade/jmh_cthulhumbus_arcade-webfont.ttf') format('truetype'),
-         local('JMHCthulhumbusArcade-Regular'), url('/public/fonts/JMHCthulhumbusArcade/jmh_cthulhumbus_arcade-webfont.svg#jmh_cthulhumbus_arcaderegular') format('svg');
+         url('../public/fonts/JMHCthulhumbusArcade/jmh_cthulhumbus_arcade-webfont.woff2') format('woff2'),
+         url('../public/fonts/JMHCthulhumbusArcade/jmh_cthulhumbus_arcade-webfont.woff') format('woff'),
+         url('/public/fonts/JMHCthulhumbusArcade/jmh_cthulhumbus_arcade-webfont.ttf') format('truetype'),
+         url('/public/fonts/JMHCthulhumbusArcade/jmh_cthulhumbus_arcade-webfont.svg#jmh_cthulhumbus_arcaderegular') format('svg');
     font-weight: normal;
     font-style: normal;
 
