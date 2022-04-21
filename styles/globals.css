@@ -345,6 +345,7 @@ img.hover-img {
   height: clamp(35px, 6.5vw, 60px);
   /* background: -webkit-linear-gradient(#eee, #565656); */
   color: black;
+  border: black;
 }
 .card-button:active {
   color: white;
