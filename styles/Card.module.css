@@ -20,18 +20,18 @@ p.card-title {
     min-height: 0vw; /* Safari Clamp Fix */
     font-size: clamp(21px, 3.5vw, 34px);
     font-family: "Cthulu", sans-serif;
-    text-shadow: -0.1vw -0.1vw 0px white, 
-    0.1vw 0.1vw 0px white, 
-    0.2vw 0.2vw 0px #ff0000, 
-    0.25vw 0.25vw 0px #ff7f00, 
-    0.3vw 0.3vw 0px #ffff00, 
-    0.35vw 0.35vw 0px #00ff00, 
-    0.4vw 0.4vw 0px #0000ff, 
-    0.45vw 0.45vw 0px #2e2b5f, 
-    0.5vw 0.5vw 0px #8b00ff, 
-    0.55vw 0.55vw 0px #ff0000, 
-    0.6vw 0.6vw 0px #ff0000;
-    color: black;
+    /* text-shadow: -1.25px -1.25px 0px white,
+      1.25px 1.25px 0px white,
+      .75px .75px 0px #FF0000, 
+      1px 1px 0px #FF7F00, 
+      1.25px 1.25px 0px #FFFF00, 
+      1.5px 1.5px 0px #00FF00, 
+      1.75px 1.75px 0px #0000FF, 
+      2px 2px 0px #2E2B5F, 
+      2.25px 2.25px 0px #8B00FF, 
+      2.5px 2.5px 0px #FF0000, 
+      3px 3px 0px #FF0000;
+    color: black; */
 }
 p.card-title > span:hover {
     /* text-decoration: underline; */

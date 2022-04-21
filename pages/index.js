@@ -41,7 +41,7 @@ const Home = () => (
                             <Scroll />
                             <div className="landing flex">
                                 <div className="title-box no-pointer flex">
-                                    <div className={`${styles['ls-bug']} gradient ${styles['zarif']} fade-in`}>Daniel Zarifpour</div>
+                                    <div className={`${styles['ls-bug']} gradient ${styles['zarif']} title-shadow fade-in`}>Daniel Zarifpour</div>
                                     <div className="break"></div>
                                     <div className={`${styles['zarif-2']} fade-in anim-delay-2s`}>
                                         <div className={`${styles['ls-bug']} ${styles['creator']} gradient`}>Creator</div>
