@@ -23,8 +23,8 @@
     display: flex;
     font-weight: 300;
     color: white;
-    text-shadow: -.05vw -.05vw 0px white,
-      .05vw .05vw 0px white;
+    /* text-shadow: -.05vw -.05vw 0px white,
+      .05vw .05vw 0px white; */
 }
 .creator {
     padding-right: 12px;
