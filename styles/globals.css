@@ -521,6 +521,8 @@ min-width: 300px;
     2.7px 2.7px 0px #8B00FF, 
     2.7px 2.7px 0px #FF0000, 
     3px 3px 0px #FF0000;
+
+    text-shadow: -1px -1px 0px white, 0.3px 0.3px 0px white, 0.9px 0.9px 0px #ff0000, 1.2px 1.2px 0px #ff7f00, 1.5px 1.5px 0px #ffff00, 1.8px 1.8px 0px #00ff00, 2.1px 2.1px 0px #0000ff, 2.4px 2.4px 0px #2e2b5f, 2.7px 2.7px 0px #8b00ff, 2.7px 2.7px 0px #ff0000, 3px 3px 0px #ff0000, -1px -1px 0px white, -0.3px -0.3px 0px white, -0.9px -0.9px 0px #ff0000, -1.2px -1.2px 0px #ff7f00, -1.5px -1.5px 0px #ffff00, -1.8px -1.8px 0px #00ff00, -2.1px -2.1px 0px #0000ff, -2.4px -2.4px 0px #2e2b5f, -2.7px -2.7px 0px #8b00ff, -2.7px -2.7px 0px #ff0000, -3px -3px 0px #ff0000;
 }
 
 .svg-icon {
