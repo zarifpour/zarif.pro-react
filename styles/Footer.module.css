@@ -109,7 +109,7 @@
 
 
 .responsive-container button:hover img {
-    animation: shake 100ms ease-in infinite;
+    /* animation: shake 100ms ease-in infinite; */
    filter: drop-shadow(-1.2px 1.2px 0px black) drop-shadow(-1.2px 1.2px 0px black) drop-shadow(-2.2px 2.2px 0px lightgray);
   /* animation: fade-in 1s; */
 
