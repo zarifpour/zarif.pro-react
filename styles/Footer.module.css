@@ -40,16 +40,19 @@
 }
 .glow-on-hover:before {
   content: '';
-  background: linear-gradient(90deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  /* background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000); */
+    /* background: rgba(255, 255, 255, 0.39); */
+    background: white;
   position: absolute;
   top: -2px;
   left:-17px;
-  background-size: 400%;
+  background-size: 200% 100%;
   z-index: -1;
   filter: blur(5px);
   width: calc(100% + 4px);
   height: calc(100% + 4px);
-  animation: glowing 20s linear infinite;
+  /* animation: glowing 12s linear infinite; */
+  animation: heavens 1s ease-in-out infinite alternate;
   opacity: 0;
   transition: opacity .3s ease-in-out;
   border-radius: 15px;
@@ -77,6 +80,9 @@
 
 .glow-on-hover:hover:before {
   opacity: 1;
+  background: white;
+  background-color: white;
+
 }
 
 .glow-on-hover:after {
@@ -91,11 +97,69 @@
 /*     background: #111; */
 }
 
+.svg-icon:hover {
+   /* filter: drop-shadow(-.15px -.15px 0px white) drop-shadow(.15px .15px 0px white) drop-shadow(.3px .3px 0px #FF0000) drop-shadow(.4px .4px 0px #FF7F00) drop-shadow(.5px .5px 0px #FFFF00) drop-shadow(.6px .6px 0px #00FF00) drop-shadow(.7px .7px 0px #0000FF) drop-shadow(.8px .8px 0px #2E2B5F) drop-shadow(.9px .9px 0px #8B00FF) drop-shadow(1px 1px 0px #FF0000); */
+  animation: shake 100ms linear infinite;
+}
+
+.responsive-container button:hover span {
+  animation: fade-in 1s;
+
+}
+
+
+.responsive-container button:hover img {
+    animation: shake 100ms ease-in infinite;
+   filter: drop-shadow(-1.2px 1.2px 0px black) drop-shadow(-1.2px 1.2px 0px black) drop-shadow(-2.2px 2.2px 0px lightgray);
+  /* animation: fade-in 1s; */
+
+}
+
+
+@keyframes shake {
+    0% {
+    transform: translate(.55px, 0);
+    }
+    50% {
+    transform: translate(-.55px, 0);
+    }
+    100% {
+    transform: translate(0, 0);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+    opacity: 0;
+    }
+    100% {
+    opacity: 1;
+    }
+}
+
 @keyframes glowing {
   0% { background-position: 0 0; }
+  10% { background-position: 80% 0; }
+  20% { background-position: 160% 0; }
+  30% { background-position: 240% 0; }
+  40% { background-position: 320% 0; }
   50% { background-position: 400% 0; }
+  60% { background-position: 320% 0; }
+  70% { background-position: 240% 0; }
+  80% { background-position: 160% 0; }
+  90% { background-position: 80% 0; }
   100% { background-position: 0 0; }
 }
+
+@keyframes heavens {
+  from {
+    box-shadow: 0 0 .5px #fff, 0 0 1px #fff, 0 0 2px rgba(255, 255, 255, 0.49), 0 0 3px rgba(255, 255, 255, 0.49), 0 0 4px rgba(255, 255, 255, 0.49), 0 0 5px rgba(255, 255, 255, 0.49), 0 0 6px rgba(255, 255, 255, 0.49);
+  }
+  to {
+    box-shadow: 0 0 2px fff, 0 0 5px rgba(255, 255, 255, 0.79), 0 0 10px rgba(255, 255, 255, 0.79), 0 0 12.5px rgba(255, 255, 255, 0.79), 0 0 15px rgba(255, 255, 255, 0.79), 0 0 17.5px rgba(255, 255, 255, 0.79), 0 0 20px rgba(255, 255, 255, 0.79);
+  }
+}
+
 .responsive-container {
 /*   background: #222222de; */
   padding: 5px;
